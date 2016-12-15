@@ -100,7 +100,7 @@ func (c *Client) NewRequest(urlStr string, body interface{}) (*http.Request, err
 
 	soapRequest := NewRequest()
 	fmt.Printf("%+v\n", soapRequest)
-	soapRequest.Envelope.Body.Content = body
+	soapRequest.Envelope.Body.Data = body
 
 	buf := new(bytes.Buffer)
 	if body != nil {

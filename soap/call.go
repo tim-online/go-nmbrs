@@ -17,8 +17,9 @@ type Response struct {
 }
 
 type Envelope struct {
-	XMLName xml.Name `xml:"Envelope"`
-	XMLNS   string   `xml:"xmlns,attr""`
+	XMLName xml.Name `xml:"http://schemas.xmlsoap.org/soap/envelope/ Envelope"`
+	// XMLName xml.Name `xml:"Envelope"`
+	// XMLNS string `xml:"xmlns,attr""`
 
 	Header *Header `xml:"Header"`
 	Body   *Body   `xml:"Body"`
@@ -26,7 +27,12 @@ type Envelope struct {
 
 func NewEnvelope() *Envelope {
 	return &Envelope{
-		XMLNS:  "http://schemas.xmlsoap.org/soap/envelope/",
+		// Xsi:           "http://www.w3.org/2001/XMLSchema-instance",
+		// Soapenc:       "http://schemas.xmlsoap.org/soap/encoding/",
+		// Xsd:           "http://www.w3.org/2001/XMLSchema",
+		// EncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		// Soap:          "http://schemas.xmlsoap.org/soap/envelope/",
+
 		Header: NewHeader(),
 		Body:   NewBody(),
 	}
@@ -62,7 +68,7 @@ func NewAuthHeader() *AuthHeader {
 // </com:AuthHeader>
 
 type Body struct {
-	Content interface{}
+	Data interface{}
 }
 
 func NewBody() *Body {

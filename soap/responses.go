@@ -4,6 +4,7 @@ import (
 	"encoding/xml"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 )
 
@@ -19,6 +20,8 @@ func CheckResponse(r *http.Response) error {
 	errorResponse := &ErrorResponse{Response: r}
 	data, err := ioutil.ReadAll(r.Body)
 	if err == nil && len(data) > 0 {
+		// @TODO: make error response for soap
+		log.Fatal("Make error response for soap")
 		err := xml.Unmarshal(data, errorResponse)
 		if err != nil {
 			return err

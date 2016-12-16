@@ -3,6 +3,7 @@ package nmbrs
 import (
 	"net/http"
 
+	"github.com/tim-online/go-nmbrs/auth"
 	"github.com/tim-online/go-nmbrs/companies"
 	"github.com/tim-online/go-nmbrs/soap"
 )
@@ -12,7 +13,7 @@ const (
 	userAgent      = "go-nmbrs/" + libraryVersion
 )
 
-func NewClient(httpClient *http.Client) *Client {
+func NewClient(httpClient *http.Client, username string, token string) *Client {
 	if httpClient == nil {
 		httpClient = http.DefaultClient
 	}
@@ -24,7 +25,11 @@ func NewClient(httpClient *http.Client) *Client {
 		},
 	}
 
-	c.Companies = companies.NewService()
+	authHeader := auth.NewAuthHeader()
+	authHeader.Username = username
+	authHeader.Token = token
+
+	c.Companies = companies.NewService(authHeader)
 	c.Companies.Client = c.client
 
 	return c
@@ -33,6 +38,9 @@ func NewClient(httpClient *http.Client) *Client {
 type Client struct {
 	// SOAP client used to communicate with the API.
 	client *soap.Client
+
+	username string
+	token    string
 
 	// Services used for communicating with the API
 	Companies *companies.Service

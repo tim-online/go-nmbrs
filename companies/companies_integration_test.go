@@ -4,11 +4,23 @@
 package companies
 
 import (
+	"fmt"
 	"net/url"
+	"os"
 	"testing"
+
+	"github.com/tim-online/go-nmbrs/auth"
+)
+
+var (
+	authHeader *auth.AuthHeader
 )
 
 func setup() {
+	authHeader = auth.NewAuthHeader()
+	authHeader.Username = os.Getenv("NMBRS_USERNAME")
+	authHeader.Token = os.Getenv("NMBRS_TOKEn")
+
 	// mux = http.NewServeMux()
 	// server = httptest.NewServer(mux)
 
@@ -31,12 +43,19 @@ func TestList(t *testing.T) {
 	setup()
 	defer teardown()
 
-	service := NewService()
+	service := NewService(authHeader)
 	u, _ := url.ParseRequestURI(sandboxEndpoint)
 	service.Endpoint = u
 
-	_, err := service.List()
+	response, err := service.List()
 	if err != nil {
 		t.Errorf("companies.List returned error: %v", err)
+		return
 	}
+
+	if len(response.Companies) == 0 {
+		t.Errorf("companies.List returned %d companies", len(response.Companies))
+	}
+
+	fmt.Printf("%+v\n", response)
 }

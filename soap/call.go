@@ -3,7 +3,7 @@ package soap
 import "encoding/xml"
 
 type Request struct {
-	Envelope *Envelope `xml:"Envelope"`
+	Envelope *Envelope `xml:"http://schemas.xmlsoap.org/soap/envelope/ Envelope"`
 }
 
 func NewRequest() *Request {
@@ -13,13 +13,18 @@ func NewRequest() *Request {
 }
 
 type Response struct {
-	Envelope *Envelope `xml:"Envelope"`
+	Envelope *Envelope `xml:"http://schemas.xmlsoap.org/soap/envelope/ Envelope"`
 }
 
+func NewResponse() *Response {
+	return &Response{
+		Envelope: NewEnvelope(),
+	}
+}
+
+// http://stackoverflow.com/questions/16202170/marshalling-xml-go-xmlname-xmlns
 type Envelope struct {
 	XMLName xml.Name `xml:"http://schemas.xmlsoap.org/soap/envelope/ Envelope"`
-	// XMLName xml.Name `xml:"Envelope"`
-	// XMLNS string `xml:"xmlns,attr""`
 
 	Header *Header `xml:"Header"`
 	Body   *Body   `xml:"Body"`
@@ -39,41 +44,30 @@ func NewEnvelope() *Envelope {
 }
 
 type Header struct {
-	AuthHeader *AuthHeader `xml:"AuthHeader"`
+	Data interface{}
 }
 
 func NewHeader() *Header {
 	return &Header{
-		AuthHeader: NewAuthHeader(),
+		Data: nil,
 	}
 }
-
-type AuthHeader struct {
-	Username string `xml:"Username"`
-	Token    string `xml:"Token"`
-}
-
-func NewAuthHeader() *AuthHeader {
-	return &AuthHeader{
-		Username: "leon@tim-online.nl",
-		Token:    "c20cb2ee55cd454b9143be5349da3f0c",
-	}
-}
-
-// <com:AuthHeader>
-// 	<!--Optional:-->
-// 	<com:Username>leon@tim-online.nl</com:Username>
-// 	<!--Optional:-->
-// 	<com:Token>c20cb2ee55cd454b9143be5349da3f0c</com:Token>
-// </com:AuthHeader>
 
 type Body struct {
-	Data interface{}
+	// If the XML element contains a sub-element that hasn't matched any
+	// of the above rules and the struct has a field with tag ",any",
+	// unmarshal maps the sub-element to that struct field.
+	Data interface{} `xml:",any"`
 }
 
 func NewBody() *Body {
 	return &Body{}
 }
+
+// func (b *Body) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
+// 	fmt.Printf("%+v\n", start)
+// 	return d.DecodeElement(b.Data, &start)
+// }
 
 // @TODO: check if this would be handy
 // type Call struct {

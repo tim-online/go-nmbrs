@@ -15,10 +15,10 @@ run: $(SOURCES)
 	go run -race $(SOURCES)
 
 test: $(SOURCES)
-	go test -race $(PACKAGES)
+	go test -race -v $(PACKAGES)
 
 integration: $(SOURCES)
-	go test -race -tags=integration $(PACKAGES)
+	go test -race -tags=integration -v $(PACKAGES)
 
 lint:
 	# gometalinter.v1 --install

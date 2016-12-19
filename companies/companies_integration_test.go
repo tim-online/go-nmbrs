@@ -19,7 +19,11 @@ var (
 func setup() {
 	authHeader = auth.NewAuthHeader()
 	authHeader.Username = os.Getenv("NMBRS_USERNAME")
-	authHeader.Token = os.Getenv("NMBRS_TOKEn")
+	authHeader.Token = os.Getenv("NMBRS_TOKEN")
+
+	if authHeader.Username == "" && authHeader.Token == "" {
+		panic("No username or token specified")
+	}
 
 	// mux = http.NewServeMux()
 	// server = httptest.NewServer(mux)

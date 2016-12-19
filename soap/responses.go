@@ -4,8 +4,8 @@ import (
 	"encoding/xml"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
+	"strings"
 )
 
 // CheckResponse checks the API response for errors, and returns them if present. A response is considered an
@@ -18,31 +18,35 @@ func CheckResponse(r *http.Response) error {
 
 	// @TODO: figure out nmbrs errors
 	errorResponse := &ErrorResponse{Response: r}
+
+	// check content-type (text/xml; charset=utf-8)
+	header := r.Header.Get("Content-Type")
+	contentType := strings.Split(header, ";")[0]
+	if contentType != "text/xml" {
+		errorResponse.Message = fmt.Sprintf("Expected Content-Type \"text/xml\", got \"%s\"", contentType)
+		return errorResponse
+	}
+
 	data, err := ioutil.ReadAll(r.Body)
-	if err == nil && len(data) > 0 {
-		// @TODO: make error response for soap
-		log.Fatal("Make error response for soap")
-		err := xml.Unmarshal(data, errorResponse)
-		if err != nil {
-			return err
-		}
+	if err != nil {
+		return errorResponse
+	}
+
+	if len(data) == 0 {
+		return errorResponse
+	}
+
+	// convert xml to struct
+	err = xml.Unmarshal(data, errorResponse)
+	if err != nil {
+		errorResponse.Message = fmt.Sprintf("Malformed json response")
+		return errorResponse
 	}
 
 	return errorResponse
 }
 
 // An ErrorResponse reports the error caused by an API request
-type ErrorResponse struct {
-	// HTTP response that caused this error
-	Response *http.Response
-
-	// Error message
-	Message string `xml:"message"`
-
-	// RequestID returned from the API, useful to contact support.
-	RequestID string `xml:"request_id"`
-}
-
 // <soap:Body>
 // 	<soap:Fault>
 // 		<faultcode>soap:Client</faultcode>
@@ -51,12 +55,18 @@ type ErrorResponse struct {
 // 		</soap:Fault>
 // 	</soap:Body>
 // </soap:Envelope>
+type ErrorResponse struct {
+	// HTTP response that caused this error
+	Response *http.Response
+
+	// Fault code
+	Code string `xml:"Body>Fault>faultcode"`
+
+	// Fault message
+	Message string `xml:"Body>Fault>faultstring"`
+}
 
 func (r *ErrorResponse) Error() string {
-	if r.RequestID != "" {
-		return fmt.Sprintf("%v %v: %d (request %q) %v",
-			r.Response.Request.Method, r.Response.Request.URL, r.Response.StatusCode, r.RequestID, r.Message)
-	}
 	return fmt.Sprintf("%v %v: %d %v",
 		r.Response.Request.Method, r.Response.Request.URL, r.Response.StatusCode, r.Message)
 }

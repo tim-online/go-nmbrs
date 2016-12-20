@@ -3,6 +3,7 @@ package soap
 import (
 	"bytes"
 	"encoding/xml"
+	"errors"
 	"fmt"
 	"log"
 	"net/http"
@@ -17,6 +18,7 @@ const (
 
 var (
 	defaultUserAgent = "go-soap"
+	ErrBadResponse   = errors.New("Bad response type")
 )
 
 type Client struct {
@@ -36,11 +38,16 @@ type Client struct {
 // RequestCompletionCallback defines the type of the request callback function
 type RequestCompletionCallback func(*http.Request, *http.Response)
 
-func NewClient() *Client {
+func NewClient(httpClient *http.Client) *Client {
 	c := &Client{
 		Client:    http.DefaultClient,
 		UserAgent: defaultUserAgent,
 	}
+
+	if httpClient != nil {
+		c.Client = httpClient
+	}
+
 	return c
 }
 
@@ -121,7 +128,7 @@ func (c *Client) NewRequest(urlStr string, request *Request) (*http.Request, err
 	httpReq.Header.Add("Content-Type", fmt.Sprintf("%s; charset=%s", mediaType, charset))
 	httpReq.Header.Add("Accept", mediaType)
 	httpReq.Header.Add("User-Agent", c.UserAgent)
-	httpReq.Header.Add("SOAPAction", "https://api.nmbrs.nl/soap/v2.1/CompanyService/List_GetAll")
+	httpReq.Header.Add("SOAPAction", request.Action.String())
 	return httpReq, nil
 }
 

@@ -1,3 +1,7 @@
+## Introduction
+
+Uses SOAP 1.1
+
 ## Endpoints
 
 - https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?WSDL

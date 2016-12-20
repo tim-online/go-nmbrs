@@ -1,7 +1,7 @@
 // +build integration
 // go test -tags=integration
 
-package companies
+package employees
 
 import (
 	"net/http"
@@ -31,7 +31,7 @@ func teardown() {
 	// server.Close()
 }
 
-func TestList(t *testing.T) {
+func TestListByCompany(t *testing.T) {
 	setup()
 	defer teardown()
 
@@ -46,15 +46,15 @@ func TestList(t *testing.T) {
 	u, _ := url.ParseRequestURI(sandboxEndpoint)
 	service.Endpoint = u
 
-	service.Client.Debug = true
+	// service.Client.Debug = true
 
-	response, err := service.List()
+	response, err := service.ListByCompany(63749, All)
 	if err != nil {
-		t.Errorf("companies.List returned error: %v", err)
+		t.Errorf("Employees.List returned error: %v", err)
 		return
 	}
 
-	if len(response.Companies) == 0 {
-		t.Errorf("companies.List returned %d companies", len(response.Companies))
+	if len(response.Employees) == 0 {
+		t.Errorf("employees.List returned %d employees", len(response.Employees))
 	}
 }

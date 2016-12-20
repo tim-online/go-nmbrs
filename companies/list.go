@@ -3,7 +3,12 @@ package companies
 import (
 	"encoding/xml"
 
+	"github.com/tim-online/go-nmbrs/lib/url"
 	"github.com/tim-online/go-nmbrs/soap"
+)
+
+const (
+	listAction = "https://api.nmbrs.nl/soap/v2.1/CompanyService/List_GetAll"
 )
 
 // List all products
@@ -25,7 +30,7 @@ func (s *Service) List() (*listResponse, error) {
 	// @TODO: check if this can be better
 	listResponse, ok := response.Envelope.Body.Data.(*listResponse)
 	if ok == false {
-		return listResponse, ErrBadResponse
+		return listResponse, soap.ErrBadResponse
 	}
 
 	return listResponse, err
@@ -33,6 +38,7 @@ func (s *Service) List() (*listResponse, error) {
 
 func newListAction() (*soap.Request, *soap.Response) {
 	request := soap.NewRequest()
+	request.Action = url.MustParse(listAction)
 	request.Envelope.Body.Data = newListRequest()
 
 	response := soap.NewResponse()
@@ -43,10 +49,13 @@ func newListAction() (*soap.Request, *soap.Response) {
 
 type listRequest struct {
 	XMLName xml.Name `xml:"List_GetAll"`
+	Xmlns   string   `xml:"xmlns,attr"`
 }
 
 func newListRequest() *listRequest {
-	return &listRequest{}
+	return &listRequest{
+		Xmlns: xmlns,
+	}
 }
 
 type listResponse struct {

@@ -1,9 +1,13 @@
 package soap
 
-import "encoding/xml"
+import (
+	"encoding/xml"
+	"net/url"
+)
 
 type Request struct {
 	Envelope *Envelope `xml:"http://schemas.xmlsoap.org/soap/envelope/ Envelope"`
+	Action   *url.URL  `xml:""`
 }
 
 func NewRequest() *Request {

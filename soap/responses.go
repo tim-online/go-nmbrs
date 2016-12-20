@@ -19,12 +19,9 @@ func CheckResponse(r *http.Response) error {
 	// @TODO: figure out nmbrs errors
 	errorResponse := &ErrorResponse{Response: r}
 
-	// check content-type (text/xml; charset=utf-8)
-	header := r.Header.Get("Content-Type")
-	contentType := strings.Split(header, ";")[0]
-	if contentType != "text/xml" {
-		errorResponse.Message = fmt.Sprintf("Expected Content-Type \"text/xml\", got \"%s\"", contentType)
-		return errorResponse
+	err := checkContentType(r)
+	if err != nil {
+		errorResponse.Message = err.Error()
 	}
 
 	data, err := ioutil.ReadAll(r.Body)
@@ -64,9 +61,23 @@ type ErrorResponse struct {
 
 	// Fault message
 	Message string `xml:"Body>Fault>faultstring"`
+
+	// Reason
+	Reason string `xml:"Body>Fault>Reason>Text"`
 }
 
 func (r *ErrorResponse) Error() string {
-	return fmt.Sprintf("%v %v: %d %v",
-		r.Response.Request.Method, r.Response.Request.URL, r.Response.StatusCode, r.Message)
+	return fmt.Sprintf("%v %v: %d (%v %v)",
+		r.Response.Request.Method, r.Response.Request.URL, r.Response.StatusCode, r.Message, r.Reason)
+}
+
+func checkContentType(response *http.Response) error {
+	// check content-type (application/soap+xml; charset=utf-8)
+	header := response.Header.Get("Content-Type")
+	contentType := strings.Split(header, ";")[0]
+	if contentType != "application/soap+xml" {
+		return fmt.Errorf("Expected Content-Type \"application/soap+xml\", got \"%s\"", contentType)
+	}
+
+	return nil
 }

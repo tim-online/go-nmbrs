@@ -5,6 +5,8 @@ import (
 
 	"github.com/tim-online/go-nmbrs/auth"
 	"github.com/tim-online/go-nmbrs/companies"
+	"github.com/tim-online/go-nmbrs/employees"
+	"github.com/tim-online/go-nmbrs/hours"
 	"github.com/tim-online/go-nmbrs/soap"
 )
 
@@ -29,8 +31,17 @@ func NewClient(httpClient *http.Client, username string, token string) *Client {
 	authHeader.Username = username
 	authHeader.Token = token
 
+	// CompanyService
 	c.Companies = companies.NewService(authHeader)
 	c.Companies.Client = c.client
+
+	// EmployeeService
+	c.Employees = employees.NewService(authHeader)
+	c.Employees.Client = c.client
+	c.Hours = hours.NewService(authHeader)
+	c.Hours.Client = c.client
+
+	// DebtorService
 
 	return c
 }
@@ -44,4 +55,5 @@ type Client struct {
 
 	// Services used for communicating with the API
 	Companies *companies.Service
+	Employees *employees.Service
 }

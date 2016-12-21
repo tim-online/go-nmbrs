@@ -5,7 +5,6 @@ package companies
 
 import (
 	"net/http"
-	"net/url"
 	"os"
 	"testing"
 	"time"
@@ -43,10 +42,10 @@ func TestList(t *testing.T) {
 	}
 
 	// set sandbox endpoint
-	u, _ := url.ParseRequestURI(sandboxEndpoint)
-	service.Endpoint = u
+	// u, _ := url.ParseRequestURI(sandboxEndpoint)
+	// service.Endpoint = u
 
-	service.Client.Debug = true
+	// service.Client.Debug = true
 
 	response, err := service.List()
 	if err != nil {

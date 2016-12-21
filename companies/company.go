@@ -10,7 +10,7 @@ const (
 
 type Company struct {
 	// XMLName             xml.Name `xml:"Company"`
-	ID                  string  `xml:"ID"`
+	ID                  int     `xml:"ID"`
 	Number              int     `xml:"Number"`
 	PhoneNumber         string  `xml:"PhoneNumber"`
 	FaxNumber           string  `xml:"FaxNumber"`

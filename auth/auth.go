@@ -3,8 +3,7 @@ package auth
 import "encoding/xml"
 
 type AuthHeader struct {
-	XMLName xml.Name `xml:"AuthHeader"`
-	Xmlns   string   `xml:"xmlns,attr"`
+	XMLName xml.Name
 
 	Username string `xml:"Username"`
 	Token    string `xml:"Token"`
@@ -12,7 +11,10 @@ type AuthHeader struct {
 
 func NewAuthHeader() *AuthHeader {
 	return &AuthHeader{
-		Xmlns:    "",
+		XMLName: xml.Name{
+			Space: "",
+			Local: "AuthHeader",
+		},
 		Username: "",
 		Token:    "",
 	}

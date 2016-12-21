@@ -1,17 +1,47 @@
-## Introduction
+# Go Nmbrs API client
 
-Uses SOAP 1.1
+go-nmbrs is an API client library for accessing the Nmbrs API via SOAP 1.1.
 
-## Endpoints
+API documentation can be found here:
+https://support.nmbrs.nl/hc/nl/categories/200216836-Nmbrs-API-for-developers
 
-- https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?WSDL
-- https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?WSDL
-- https://api.nmbrs.nl/soap/v2.1/DebtorService.asmx?WSDL
+## Usage
 
-## Links
+``` go
+import "github.com/tim-online/go-nmbrs"
+```
 
-- https://support.nmbrs.nl/hc/nl/categories/200216836-Nmbrs-API-for-developers
+### Request companies
 
-## Test depdency
+``` go
+// get username & password
+username := os.Getenv("NMBRS_USERNAME")
+token := os.Getenv("NMBRS_TOKEN")
 
-- https://github.com/tmc/watcher
+// build client
+client := nmbrs.NewClient(nil, username, token)
+client.client.Debug = true
+
+// request all companies this token has access to
+resp, err := client.Companies.List()
+if err != nil {
+	panic(err)
+}
+
+companies := resp.Companies
+```
+
+### Request all employees for a company
+
+``` go
+import "github.com/tim-online/go-nmbrs/employees"
+
+// get id of company
+companyID := companies[0].ID
+
+// request all employees for this company ID
+resp2, err := client.Employees.ListByCompany(companyID, employees.All)
+if err != nil {
+	panic(err)
+}
+```

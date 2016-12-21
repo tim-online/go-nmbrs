@@ -26,11 +26,14 @@ func NewService(authHeader *auth.AuthHeader) *Service {
 		log.Fatal(err)
 	}
 
-	authHeader.Xmlns = xmlns
+	// set correct xmlns
+	authHeaderCopy := &auth.AuthHeader{}
+	*authHeaderCopy = *authHeader
+	authHeaderCopy.XMLName.Space = xmlns
 
 	return &Service{
 		Client:     soap.NewClient(nil),
 		Endpoint:   endpoint,
-		AuthHeader: authHeader,
+		AuthHeader: authHeaderCopy,
 	}
 }

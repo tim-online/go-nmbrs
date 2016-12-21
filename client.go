@@ -56,4 +56,5 @@ type Client struct {
 	// Services used for communicating with the API
 	Companies *companies.Service
 	Employees *employees.Service
+	Hours     *hours.Service
 }

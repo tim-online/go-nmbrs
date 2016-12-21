@@ -46,7 +46,7 @@ func setup() {
 	service.Endpoint = url
 
 	// enable debugging
-	service.Client.Debug = true
+	// service.Client.Debug = true
 }
 
 func teardown() {

@@ -19,7 +19,7 @@ var (
 	year       = 2016
 )
 
-func setup() {
+func setupIntegration() {
 	authHeader = auth.NewAuthHeader()
 	authHeader.Username = os.Getenv("NMBRS_USERNAME")
 	authHeader.Token = os.Getenv("NMBRS_TOKEN")
@@ -29,13 +29,13 @@ func setup() {
 	}
 }
 
-func teardown() {
+func teardownIntegration() {
 	// server.Close()
 }
 
-func TestListFixed(t *testing.T) {
-	setup()
-	defer teardown()
+func TestIntegrationListFixed(t *testing.T) {
+	setupIntegration()
+	defer teardownIntegration()
 
 	service := NewService(authHeader)
 
@@ -48,7 +48,7 @@ func TestListFixed(t *testing.T) {
 	// u, _ := url.ParseRequestURI(sandboxEndpoint)
 	// service.Endpoint = u
 
-	// service.Client.Debug = true
+	service.Client.Debug = true
 
 	response, err := service.ListFixed(employeeID, period, year)
 	if err != nil {
@@ -61,9 +61,9 @@ func TestListFixed(t *testing.T) {
 	}
 }
 
-func TestListVar(t *testing.T) {
-	setup()
-	defer teardown()
+func TestIntegrationListVar(t *testing.T) {
+	setupIntegration()
+	defer teardownIntegration()
 
 	service := NewService(authHeader)
 
@@ -89,7 +89,7 @@ func TestListVar(t *testing.T) {
 	}
 }
 
-func TestListFixedCurrent(t *testing.T) {
+func TestIntegrationListFixedCurrent(t *testing.T) {
 	setup()
 	defer teardown()
 
@@ -117,7 +117,7 @@ func TestListFixedCurrent(t *testing.T) {
 	}
 }
 
-func TestListVarCurrent(t *testing.T) {
+func TestIntegrationListVarCurrent(t *testing.T) {
 	setup()
 	defer teardown()
 

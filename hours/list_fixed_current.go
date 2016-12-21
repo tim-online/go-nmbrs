@@ -64,8 +64,6 @@ func newListFixedCurrentRequest(employeeID int) *listFixedCurrentRequest {
 	return &listFixedCurrentRequest{
 		Xmlns:      xmlns,
 		EmployeeID: employeeID,
-		Period:     period,
-		Year:       year,
 	}
 }
 

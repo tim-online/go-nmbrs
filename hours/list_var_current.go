@@ -64,8 +64,6 @@ func newListVarCurrentRequest(employeeID int) *listVarCurrentRequest {
 	return &listVarCurrentRequest{
 		Xmlns:      xmlns,
 		EmployeeID: employeeID,
-		Period:     period,
-		Year:       year,
 	}
 }
 

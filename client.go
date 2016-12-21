@@ -15,6 +15,7 @@ const (
 	userAgent      = "go-nmbrs/" + libraryVersion
 )
 
+// NewClient returns a new Nmbrs API client
 func NewClient(httpClient *http.Client, username string, token string) *Client {
 	if httpClient == nil {
 		httpClient = http.DefaultClient
@@ -46,6 +47,7 @@ func NewClient(httpClient *http.Client, username string, token string) *Client {
 	return c
 }
 
+// Client manages communication with Nmbrs API
 type Client struct {
 	// SOAP client used to communicate with the API.
 	client *soap.Client

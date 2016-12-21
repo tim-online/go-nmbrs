@@ -11,7 +11,7 @@ const (
 	listByCompanyAction = "https://api.nmbrs.nl/soap/v2.1/EmployeeService/List_GetByCompany"
 )
 
-// List all products
+// ListByCompany gets all employees that belong to a company and are active as given.
 func (s *Service) ListByCompany(companyID int, active ActiveFilter) (*listByCompanyResponse, error) {
 	// get a new request & response envelope
 	request, response := newListByCompanyAction(companyID, active)

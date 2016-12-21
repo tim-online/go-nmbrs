@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	listVarCurrentAction = "https://api.nmbrs.nl/soap/v2.1/EmployeeService/HourComponentVar_GetCurrent"
+	listVarCurrentAction = "HourComponentVar_GetCurrent"
 )
 
 // List fixed hour components
@@ -42,8 +42,9 @@ func (s *Service) ListVarCurrent(employeeID int) (*listVarCurrentResponse, error
 
 func newListVarCurrentAction(employeeID int) (*soap.Request, *soap.Response) {
 	request := soap.NewRequest()
-	request.Action = url.MustParse(listVarCurrentAction)
-	request.Envelope.Body.Data = newListVarCurrentRequest(employeeID)
+	body := newListVarCurrentRequest(employeeID)
+	request.Envelope.Body.Data = body
+	request.Action = url.MustParse(body.XMLName.Space + "/" + body.XMLName.Local)
 
 	response := soap.NewResponse()
 	response.Envelope.Body.Data = newListVarCurrentResponse()
@@ -52,8 +53,7 @@ func newListVarCurrentAction(employeeID int) (*soap.Request, *soap.Response) {
 }
 
 type listVarCurrentRequest struct {
-	XMLName xml.Name `xml:"HourComponentVar_GetCurrent"`
-	Xmlns   string   `xml:"xmlns,attr"`
+	XMLName xml.Name
 
 	EmployeeID int `xml:"EmployeeId"`
 	Period     int `xml:"Period"`
@@ -62,7 +62,10 @@ type listVarCurrentRequest struct {
 
 func newListVarCurrentRequest(employeeID int) *listVarCurrentRequest {
 	return &listVarCurrentRequest{
-		Xmlns:      xmlns,
+		XMLName: xml.Name{
+			Space: xmlns,
+			Local: listVarCurrentAction,
+		},
 		EmployeeID: employeeID,
 	}
 }

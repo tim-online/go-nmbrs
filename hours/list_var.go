@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	listVarAction = "https://api.nmbrs.nl/soap/v2.1/EmployeeService/HourComponentVar_Get"
+	listVarAction = "HourComponentVar_Get"
 )
 
 // List variable hour components
@@ -42,8 +42,9 @@ func (s *Service) ListVar(employeeID int, period int, year int) (*listVarRespons
 
 func newListVarAction(employeeID int, period int, year int) (*soap.Request, *soap.Response) {
 	request := soap.NewRequest()
-	request.Action = url.MustParse(listVarAction)
-	request.Envelope.Body.Data = newListVarRequest(employeeID, period, year)
+	body := newListVarRequest(employeeID, period, year)
+	request.Envelope.Body.Data = body
+	request.Action = url.MustParse(body.XMLName.Space + "/" + body.XMLName.Local)
 
 	response := soap.NewResponse()
 	response.Envelope.Body.Data = newListVarResponse()
@@ -52,8 +53,7 @@ func newListVarAction(employeeID int, period int, year int) (*soap.Request, *soa
 }
 
 type listVarRequest struct {
-	XMLName xml.Name `xml:"HourComponentVar_Get"`
-	Xmlns   string   `xml:"xmlns,attr"`
+	XMLName xml.Name
 
 	EmployeeID int `xml:"EmployeeId"`
 	Period     int `xml:"Period"`
@@ -62,7 +62,10 @@ type listVarRequest struct {
 
 func newListVarRequest(employeeID int, period int, year int) *listVarRequest {
 	return &listVarRequest{
-		Xmlns:      xmlns,
+		XMLName: xml.Name{
+			Space: xmlns,
+			Local: listVarAction,
+		},
 		EmployeeID: employeeID,
 		Period:     period,
 		Year:       year,
@@ -76,4 +79,3 @@ type listVarResponse struct {
 func newListVarResponse() *listVarResponse {
 	return &listVarResponse{}
 }
-

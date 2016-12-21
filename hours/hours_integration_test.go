@@ -48,7 +48,7 @@ func TestIntegrationListFixed(t *testing.T) {
 	// u, _ := url.ParseRequestURI(sandboxEndpoint)
 	// service.Endpoint = u
 
-	service.Client.Debug = true
+	// service.Client.Debug = true
 
 	response, err := service.ListFixed(employeeID, period, year)
 	if err != nil {
@@ -90,8 +90,8 @@ func TestIntegrationListVar(t *testing.T) {
 }
 
 func TestIntegrationListFixedCurrent(t *testing.T) {
-	setup()
-	defer teardown()
+	setupIntegration()
+	defer teardownIntegration()
 
 	service := NewService(authHeader)
 
@@ -118,8 +118,8 @@ func TestIntegrationListFixedCurrent(t *testing.T) {
 }
 
 func TestIntegrationListVarCurrent(t *testing.T) {
-	setup()
-	defer teardown()
+	setupIntegration()
+	defer teardownIntegration()
 
 	service := NewService(authHeader)
 

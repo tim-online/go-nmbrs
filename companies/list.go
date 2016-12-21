@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	listAction = "https://api.nmbrs.nl/soap/v2.1/CompanyService/List_GetAll"
+	listAction = "List_GetAll"
 )
 
 // List all products
@@ -38,8 +38,9 @@ func (s *Service) List() (*listResponse, error) {
 
 func newListAction() (*soap.Request, *soap.Response) {
 	request := soap.NewRequest()
-	request.Action = url.MustParse(listAction)
-	request.Envelope.Body.Data = newListRequest()
+	body := newListRequest()
+	request.Envelope.Body.Data = body
+	request.Action = url.MustParse(body.XMLName.Space + "/" + body.XMLName.Local)
 
 	response := soap.NewResponse()
 	response.Envelope.Body.Data = newListResponse()
@@ -48,13 +49,15 @@ func newListAction() (*soap.Request, *soap.Response) {
 }
 
 type listRequest struct {
-	XMLName xml.Name `xml:"List_GetAll"`
-	Xmlns   string   `xml:"xmlns,attr"`
+	XMLName xml.Name
 }
 
 func newListRequest() *listRequest {
 	return &listRequest{
-		Xmlns: xmlns,
+		XMLName: xml.Name{
+			Space: xmlns,
+			Local: listAction,
+		},
 	}
 }
 

@@ -38,10 +38,6 @@ func TestListVar(t *testing.T) {
 
 		// create the wanted request
 		want := newListVarRequest(employeeID, period, year)
-		// want.XMLName = xml.Name{
-		// 	Space: xmlns,
-		// 	Local: "HourComponentVar_Get",
-		// }
 
 		// compare them
 		if !reflect.DeepEqual(got, want) {

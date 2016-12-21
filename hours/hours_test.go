@@ -54,13 +54,15 @@ func teardown() {
 }
 
 func testMethod(t *testing.T, r *http.Request, expected string) {
-	if expected != r.Method {
-		t.Errorf("Request method = %v, expected %v", r.Method, expected)
+	got := r.Method
+	if expected != got {
+		t.Errorf("Request method = %v, expected %v", got, expected)
 	}
 }
 
 func testHeader(t *testing.T, r *http.Request, key string, expected string) {
-	if expected != r.Header.Get(key) {
-		t.Errorf("Request header %v = %v, expected %v", key, r.Method, expected)
+	got := r.Header.Get(key)
+	if expected != got {
+		t.Errorf("Request header %v = %v, expected %v", key, got, expected)
 	}
 }

@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	listByCompanyAction = "https://api.nmbrs.nl/soap/v2.1/EmployeeService/List_GetByCompany"
+	listByCompanyAction = "List_GetByCompany"
 )
 
 // ListByCompany gets all employees that belong to a company and are active as given.
@@ -42,8 +42,9 @@ func (s *Service) ListByCompany(companyID int, active ActiveFilter) (*listByComp
 
 func newListByCompanyAction(companyID int, active ActiveFilter) (*soap.Request, *soap.Response) {
 	request := soap.NewRequest()
-	request.Action = url.MustParse(listByCompanyAction)
-	request.Envelope.Body.Data = newListByCompanyRequest(companyID, active)
+	body := newListByCompanyRequest(companyID, active)
+	request.Envelope.Body.Data = body
+	request.Action = url.MustParse(body.XMLName.Space + "/" + body.XMLName.Local)
 
 	response := soap.NewResponse()
 	response.Envelope.Body.Data = newListByCompanyResponse()
@@ -52,8 +53,7 @@ func newListByCompanyAction(companyID int, active ActiveFilter) (*soap.Request, 
 }
 
 type listByCompanyRequest struct {
-	XMLName xml.Name `xml:"List_GetByCompany"`
-	Xmlns   string   `xml:"xmlns,attr"`
+	XMLName xml.Name
 
 	CompanyID int          `xml:"CompanyId"`
 	Active    ActiveFilter `xml:"active"`
@@ -61,7 +61,11 @@ type listByCompanyRequest struct {
 
 func newListByCompanyRequest(companyID int, active ActiveFilter) *listByCompanyRequest {
 	return &listByCompanyRequest{
-		Xmlns:     xmlns,
+		XMLName: xml.Name{
+			Space: xmlns,
+			Local: listVarAction,
+		},
+
 		CompanyID: companyID,
 		Active:    active,
 	}

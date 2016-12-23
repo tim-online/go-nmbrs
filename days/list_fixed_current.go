@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	listFixedCurrentAction = "https://api.nmbrs.nl/soap/v2.1/EmployeeService/DaysFixed_GetCurrent"
+	listFixedCurrentAction = "DaysFixed_GetCurrent"
 )
 
 // List fixed days
@@ -42,8 +42,9 @@ func (s *Service) ListFixedCurrent(employeeID int) (*listFixedCurrentResponse, e
 
 func newListFixedCurrentAction(employeeID int) (*soap.Request, *soap.Response) {
 	request := soap.NewRequest()
-	request.Action = url.MustParse(listFixedCurrentAction)
-	request.Envelope.Body.Data = newListFixedCurrentRequest(employeeID)
+	body := newListFixedCurrentRequest(employeeID)
+	request.Envelope.Body.Data = body
+	request.Action = url.MustParse(body.XMLName.Space + "/" + body.XMLName.Local)
 
 	response := soap.NewResponse()
 	response.Envelope.Body.Data = newListFixedCurrentResponse()
@@ -53,14 +54,17 @@ func newListFixedCurrentAction(employeeID int) (*soap.Request, *soap.Response) {
 
 type listFixedCurrentRequest struct {
 	XMLName xml.Name `xml:"DaysFixed_GetCurrent"`
-	Xmlns   string   `xml:"xmlns,attr"`
 
 	EmployeeID int `xml:"EmployeeId"`
 }
 
 func newListFixedCurrentRequest(employeeID int) *listFixedCurrentRequest {
 	return &listFixedCurrentRequest{
-		Xmlns:      xmlns,
+		XMLName: xml.Name{
+			Space: xmlns,
+			Local: listVarAction,
+		},
+
 		EmployeeID: employeeID,
 	}
 }

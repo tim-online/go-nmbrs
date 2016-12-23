@@ -84,7 +84,7 @@ func TestList(t *testing.T) {
 	want := &listResponse{
 		Companies: []Company{
 			Company{
-				ID:                  "123",
+				ID:                  123,
 				Number:              456,
 				PhoneNumber:         "555-555-555",
 				FaxNumber:           "555-555-556",
@@ -94,7 +94,7 @@ func TestList(t *testing.T) {
 				KvkNr:               "20153354",
 			},
 			Company{
-				ID:                  "789",
+				ID:                  789,
 				Number:              101112,
 				PhoneNumber:         "555-555-666",
 				FaxNumber:           "555-555-667",

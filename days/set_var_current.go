@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	setVarCurrentAction = "https://api.nmbrs.nl/soap/v2.1/EmployeeService/DaysVar_SetCurrent"
+	setVarCurrentAction = "DaysVar_SetCurrent"
 )
 
 // Set variable days of current period
@@ -42,8 +42,9 @@ func (s *Service) SetVarCurrent(employeeID int, days int) (*setVarCurrentRespons
 
 func newSetVarCurrentAction(employeeID int, days int) (*soap.Request, *soap.Response) {
 	request := soap.NewRequest()
-	request.Action = url.MustParse(setVarCurrentAction)
-	request.Envelope.Body.Data = newSetVarCurrentRequest(employeeID, days)
+	body := newSetVarCurrentRequest(employeeID, days)
+	request.Envelope.Body.Data = body
+	request.Action = url.MustParse(body.XMLName.Space + "/" + body.XMLName.Local)
 
 	response := soap.NewResponse()
 	response.Envelope.Body.Data = newSetVarCurrentResponse()
@@ -53,7 +54,6 @@ func newSetVarCurrentAction(employeeID int, days int) (*soap.Request, *soap.Resp
 
 type setVarCurrentRequest struct {
 	XMLName xml.Name `xml:"DaysVar_SetCurrent"`
-	Xmlns   string   `xml:"xmlns,attr"`
 
 	EmployeeID int `xml:"EmployeeId"`
 	Days       int `xml:"Days"`
@@ -61,7 +61,11 @@ type setVarCurrentRequest struct {
 
 func newSetVarCurrentRequest(employeeID int, days int) *setVarCurrentRequest {
 	return &setVarCurrentRequest{
-		Xmlns:      xmlns,
+		XMLName: xml.Name{
+			Space: xmlns,
+			Local: setVarCurrentAction,
+		},
+
 		EmployeeID: employeeID,
 		Days:       days,
 	}

@@ -63,7 +63,7 @@ func newListByCompanyRequest(companyID int, active ActiveFilter) *listByCompanyR
 	return &listByCompanyRequest{
 		XMLName: xml.Name{
 			Space: xmlns,
-			Local: listVarAction,
+			Local: listByCompanyAction,
 		},
 
 		CompanyID: companyID,

@@ -103,7 +103,7 @@
 - [ ] [DaysFixed_Stop](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=DaysFixed_Stop)
 - [x] [DaysVar_Get](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=DaysVar_Get)
 - [x] [DaysVar_GetCurrent](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=DaysVar_GetCurrent)
-- [ ] [DaysVar_Set](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=DaysVar_Set)
+- [x] [DaysVar_Set](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=DaysVar_Set)
 - [x] [DaysVar_SetCurrent](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=DaysVar_SetCurrent)
 - [ ] [Department_GetAll_AllEmployeesByCompany](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Department_GetAll_AllEmployeesByCompany)
 - [ ] [Department_GetCurrent](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Department_GetCurrent)

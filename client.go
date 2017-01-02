@@ -5,6 +5,7 @@ import (
 
 	"github.com/tim-online/go-nmbrs/auth"
 	"github.com/tim-online/go-nmbrs/companies"
+	"github.com/tim-online/go-nmbrs/days"
 	"github.com/tim-online/go-nmbrs/employees"
 	"github.com/tim-online/go-nmbrs/hours"
 	"github.com/tim-online/go-nmbrs/soap"
@@ -39,6 +40,8 @@ func NewClient(httpClient *http.Client, username string, token string) *Client {
 	// EmployeeService
 	c.Employees = employees.NewService(authHeader)
 	c.Employees.Client = c.client
+	c.Days = days.NewService(authHeader)
+	c.Days.Client = c.client
 	c.Hours = hours.NewService(authHeader)
 	c.Hours.Client = c.client
 
@@ -58,5 +61,6 @@ type Client struct {
 	// Services used for communicating with the API
 	Companies *companies.Service
 	Employees *employees.Service
+	Days      *days.Service
 	Hours     *hours.Service
 }

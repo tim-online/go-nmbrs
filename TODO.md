@@ -126,7 +126,7 @@
 - [ ] [HourComponentFixed_InsertCurrent](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=HourComponentFixed_InsertCurrent)
 - [ ] [HourComponentFixed_Insert_Batch](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=HourComponentFixed_Insert_Batch)
 - [ ] [HourComponentFixed_Stop](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=HourComponentFixed_Stop)
-- [ ] [HourComponentVar_Clear](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=HourComponentVar_Clear)
+- [x] [HourComponentVar_Clear](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=HourComponentVar_Clear)
 - [ ] [HourComponentVar_ClearCurrent](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=HourComponentVar_ClearCurrent)
 - [x] [HourComponentVar_Get](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=HourComponentVar_Get)
 - [x] [HourComponentVar_GetCurrent](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=HourComponentVar_GetCurrent)

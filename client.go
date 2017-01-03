@@ -5,8 +5,10 @@ import (
 
 	"github.com/tim-online/go-nmbrs/auth"
 	"github.com/tim-online/go-nmbrs/companies"
+	"github.com/tim-online/go-nmbrs/costcenters"
 	"github.com/tim-online/go-nmbrs/days"
 	"github.com/tim-online/go-nmbrs/employees"
+	"github.com/tim-online/go-nmbrs/hourcodes"
 	"github.com/tim-online/go-nmbrs/hours"
 	"github.com/tim-online/go-nmbrs/soap"
 )
@@ -26,6 +28,7 @@ func NewClient(httpClient *http.Client, username string, token string) *Client {
 		client: &soap.Client{
 			Client:    httpClient,
 			UserAgent: userAgent,
+			Debug:     true,
 		},
 	}
 
@@ -36,6 +39,8 @@ func NewClient(httpClient *http.Client, username string, token string) *Client {
 	// CompanyService
 	c.Companies = companies.NewService(authHeader)
 	c.Companies.Client = c.client
+	c.CostCenters = costcenters.NewService(authHeader)
+	c.CostCenters.Client = c.client
 
 	// EmployeeService
 	c.Employees = employees.NewService(authHeader)
@@ -44,6 +49,8 @@ func NewClient(httpClient *http.Client, username string, token string) *Client {
 	c.Days.Client = c.client
 	c.Hours = hours.NewService(authHeader)
 	c.Hours.Client = c.client
+	c.HourCodes = hourcodes.NewService(authHeader)
+	c.HourCodes.Client = c.client
 
 	// DebtorService
 
@@ -59,8 +66,10 @@ type Client struct {
 	token    string
 
 	// Services used for communicating with the API
-	Companies *companies.Service
-	Employees *employees.Service
-	Days      *days.Service
-	Hours     *hours.Service
+	Companies   *companies.Service
+	Employees   *employees.Service
+	Days        *days.Service
+	Hours       *hours.Service
+	CostCenters *costcenters.Service
+	HourCodes   *hourcodes.Service
 }

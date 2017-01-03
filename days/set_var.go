@@ -76,7 +76,7 @@ func newSetVarAction(requestBody *setVarRequest, responseBody *setVarResponse) (
 }
 
 type setVarRequest struct {
-	XMLName xml.Name `xml:"DaysVar_Set"`
+	XMLName xml.Name
 
 	EmployeeID int `xml:"EmployeeId"`
 	Days       int `xml:"Days"`

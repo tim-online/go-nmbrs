@@ -12,15 +12,7 @@ const (
 )
 
 // Set variable days of period
-func (s *Service) SetVar(employeeID int, days int, year int, period int) (*setVarResponse, error) {
-	// get a new request & response envelope
-	requestBody := &setVarRequest{
-		EmployeeID: employeeID,
-		Days:       days,
-		Year:       year,
-		Period:     period,
-	}
-
+func (s *Service) SetVar(requestBody *SetVarRequest) (*setVarResponse, error) {
 	responseBody := &setVarResponse{}
 	request, response := newSetVarAction(requestBody, responseBody)
 
@@ -60,7 +52,7 @@ func (s *Service) SetVar(employeeID int, days int, year int, period int) (*setVa
 // 	return request, response
 // }
 
-func newSetVarAction(requestBody *setVarRequest, responseBody *setVarResponse) (*soap.Request, *soap.Response) {
+func newSetVarAction(requestBody *SetVarRequest, responseBody *setVarResponse) (*soap.Request, *soap.Response) {
 	requestBody.XMLName = xml.Name{
 		Space: xmlns,
 		Local: setVarAction,
@@ -75,13 +67,14 @@ func newSetVarAction(requestBody *setVarRequest, responseBody *setVarResponse) (
 	return request, response
 }
 
-type setVarRequest struct {
+type SetVarRequest struct {
 	XMLName xml.Name
 
-	EmployeeID int `xml:"EmployeeId"`
-	Days       int `xml:"Days"`
-	Year       int `xml:"Year"`
-	Period     int `xml:"Period"`
+	EmployeeID      int  `xml:"EmployeeId"`
+	Days            int  `xml:"Days"`
+	Year            int  `xml:"Year"`
+	Period          int  `xml:"Period"`
+	UnprotectedMode bool `xml:"UnprotectedMode"`
 }
 
 type setVarResponse struct {

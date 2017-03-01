@@ -172,7 +172,7 @@
 - [ ] [Salary_GetList](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Salary_GetList)
 - [ ] [Salary_Update](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Salary_Update)
 - [ ] [Salary_UpdateCurrent](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Salary_UpdateCurrent)
-- [ ] [Schedule_Get](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Schedule_Get)
+- [x] [Schedule_Get](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Schedule_Get)
 - [ ] [Schedule_GetAll_AllEmployeesByCompany](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Schedule_GetAll_AllEmployeesByCompany)
 - [ ] [Schedule_GetCurrent](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Schedule_GetCurrent)
 - [ ] [Schedule_GetList](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Schedule_GetList)

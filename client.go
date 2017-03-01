@@ -10,6 +10,7 @@ import (
 	"github.com/tim-online/go-nmbrs/employees"
 	"github.com/tim-online/go-nmbrs/hourcodes"
 	"github.com/tim-online/go-nmbrs/hours"
+	"github.com/tim-online/go-nmbrs/schedules"
 	"github.com/tim-online/go-nmbrs/soap"
 )
 
@@ -17,6 +18,25 @@ const (
 	libraryVersion = "0.0.1"
 	userAgent      = "go-nmbrs/" + libraryVersion
 )
+
+// Client manages communication with Nmbrs API
+type Client struct {
+	// SOAP client used to communicate with the API.
+	client *soap.Client
+
+	username string
+	token    string
+
+	// Services used for communicating with the API
+	Companies   *companies.Service
+	Employees   *employees.Service
+	Days        *days.Service
+	Hours       *hours.Service
+	Wages       *wages.Service
+	CostCenters *costcenters.Service
+	HourCodes   *hourcodes.Service
+	Schedules   *schedules.Service
+}
 
 // NewClient returns a new Nmbrs API client
 func NewClient(httpClient *http.Client, username string, token string) *Client {
@@ -28,7 +48,7 @@ func NewClient(httpClient *http.Client, username string, token string) *Client {
 		client: &soap.Client{
 			Client:    httpClient,
 			UserAgent: userAgent,
-			Debug:     true,
+			Debug:     false,
 		},
 	}
 

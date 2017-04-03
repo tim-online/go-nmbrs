@@ -2,6 +2,7 @@ package nmbrs
 
 import (
 	"net/http"
+	"net/url"
 
 	"github.com/tim-online/go-nmbrs/auth"
 	"github.com/tim-online/go-nmbrs/companies"
@@ -72,27 +73,72 @@ func NewClient(httpClient *http.Client, username string, token string) *Client {
 	c.Days.Client = c.client
 	c.Hours = hours.NewService(authHeader)
 	c.Hours.Client = c.client
+	c.Wages = wages.NewService(authHeader)
+	c.Wages.Client = c.client
 	c.HourCodes = hourcodes.NewService(authHeader)
 	c.HourCodes.Client = c.client
+	c.Schedules = schedules.NewService(authHeader)
+	c.Schedules.Client = c.client
+	c.CostCenter = costcenter.NewService(authHeader)
+	c.CostCenter.Client = c.client
 
 	// DebtorService
 
 	return c
 }
 
-// Client manages communication with Nmbrs API
-type Client struct {
-	// SOAP client used to communicate with the API.
-	client *soap.Client
+func (c *Client) SetDebug(debug bool) {
+	c.client.Debug = debug
+}
 
-	username string
-	token    string
+func (c *Client) SetSandbox(sandbox bool) {
+	if sandbox == true {
+		u, _ := url.ParseRequestURI(companies.SandboxEndpoint)
+		c.Companies.Endpoint = u
 
-	// Services used for communicating with the API
-	Companies   *companies.Service
-	Employees   *employees.Service
-	Days        *days.Service
-	Hours       *hours.Service
-	CostCenters *costcenters.Service
-	HourCodes   *hourcodes.Service
+		u, _ = url.ParseRequestURI(costcenters.SandboxEndpoint)
+		c.CostCenters.Endpoint = u
+
+		u, _ = url.ParseRequestURI(employees.SandboxEndpoint)
+		c.Employees.Endpoint = u
+
+		u, _ = url.ParseRequestURI(days.SandboxEndpoint)
+		c.Days.Endpoint = u
+
+		u, _ = url.ParseRequestURI(hours.SandboxEndpoint)
+		c.Hours.Endpoint = u
+
+		u, _ = url.ParseRequestURI(wages.SandboxEndpoint)
+		c.Wages.Endpoint = u
+
+		u, _ = url.ParseRequestURI(hourcodes.SandboxEndpoint)
+		c.HourCodes.Endpoint = u
+
+		u, _ = url.ParseRequestURI(schedules.SandboxEndpoint)
+		c.Schedules.Endpoint = u
+	} else {
+		u, _ := url.ParseRequestURI(companies.Endpoint)
+		c.Companies.Endpoint = u
+
+		u, _ = url.ParseRequestURI(costcenters.Endpoint)
+		c.CostCenters.Endpoint = u
+
+		u, _ = url.ParseRequestURI(employees.Endpoint)
+		c.Employees.Endpoint = u
+
+		u, _ = url.ParseRequestURI(days.Endpoint)
+		c.Days.Endpoint = u
+
+		u, _ = url.ParseRequestURI(hours.Endpoint)
+		c.Hours.Endpoint = u
+
+		u, _ = url.ParseRequestURI(wages.Endpoint)
+		c.Wages.Endpoint = u
+
+		u, _ = url.ParseRequestURI(hourcodes.Endpoint)
+		c.HourCodes.Endpoint = u
+
+		u, _ = url.ParseRequestURI(schedules.Endpoint)
+		c.Schedules.Endpoint = u
+	}
 }

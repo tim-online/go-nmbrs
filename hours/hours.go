@@ -10,8 +10,8 @@ import (
 
 const (
 	xmlns           = "https://api.nmbrs.nl/soap/v2.1/EmployeeService"
-	endpoint        = "https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx"
-	sandboxEndpoint = "https://api-sandbox.nmbrs.nl/soap/v2.1/EmployeeService.asmx"
+	Endpoint        = "https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx"
+	SandboxEndpoint = "https://api-sandbox.nmbrs.nl/soap/v2.1/EmployeeService.asmx"
 )
 
 type Service struct {
@@ -21,7 +21,7 @@ type Service struct {
 }
 
 func NewService(authHeader *auth.AuthHeader) *Service {
-	endpoint, err := url.ParseRequestURI(endpoint)
+	endpoint, err := url.ParseRequestURI(Endpoint)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -5,6 +5,7 @@ import (
 
 	"github.com/tim-online/go-nmbrs/auth"
 	"github.com/tim-online/go-nmbrs/companies"
+	"github.com/tim-online/go-nmbrs/costcenter"
 	"github.com/tim-online/go-nmbrs/costcenters"
 	"github.com/tim-online/go-nmbrs/days"
 	"github.com/tim-online/go-nmbrs/employees"
@@ -36,6 +37,7 @@ type Client struct {
 	CostCenters *costcenters.Service
 	HourCodes   *hourcodes.Service
 	Schedules   *schedules.Service
+	CostCenter  *costcenter.Service
 }
 
 // NewClient returns a new Nmbrs API client

@@ -13,6 +13,7 @@ import (
 	"github.com/tim-online/go-nmbrs/hours"
 	"github.com/tim-online/go-nmbrs/schedules"
 	"github.com/tim-online/go-nmbrs/soap"
+	"github.com/tim-online/go-nmbrs/wages"
 )
 
 const (

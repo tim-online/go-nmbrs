@@ -44,6 +44,14 @@ func (s *Service) InsertVarBatch(requestBody *InsertVarBatchRequest) (*insertVar
 	return insertVarBatchResponse, err
 }
 
+func (s *Service) NewWageComponent() *EmployeeWageComponent {
+	return &EmployeeWageComponent{}
+}
+
+func (s *Service) NewInsertVarBatchRequest() *InsertVarBatchRequest {
+	return &InsertVarBatchRequest{}
+}
+
 func newInsertVarBatchAction(requestBody *InsertVarBatchRequest, responseBody *insertVarBatchResponse) (*soap.Request, *soap.Response) {
 	requestBody.XMLName = xml.Name{
 		Space: xmlns,

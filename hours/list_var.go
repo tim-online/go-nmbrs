@@ -11,8 +11,8 @@ const (
 	listVarAction = "HourComponentVar_Get"
 )
 
-// List variable hour components
-func (s *Service) ListVar(employeeID int, period int, year int) (*listVarResponse, error) {
+// ListVar variable hour components
+func (s *Service) ListVar(employeeID int, period int, year int) (*ListVarResponse, error) {
 	// get a new request & response envelope
 	request, response := newListVarAction(employeeID, period, year)
 
@@ -32,12 +32,12 @@ func (s *Service) ListVar(employeeID int, period int, year int) (*listVarRespons
 	}
 
 	// @TODO: check if this can be better
-	listVarResponse, ok := response.Envelope.Body.Data.(*listVarResponse)
+	ListVarResponse, ok := response.Envelope.Body.Data.(*ListVarResponse)
 	if ok == false {
-		return listVarResponse, soap.ErrBadResponse
+		return ListVarResponse, soap.ErrBadResponse
 	}
 
-	return listVarResponse, err
+	return ListVarResponse, err
 }
 
 func newListVarAction(employeeID int, period int, year int) (*soap.Request, *soap.Response) {
@@ -72,10 +72,10 @@ func newListVarRequest(employeeID int, period int, year int) *listVarRequest {
 	}
 }
 
-type listVarResponse struct {
+type ListVarResponse struct {
 	HourComponents []HourComponent `xml:"HourComponentVar_GetResult>HourComponent"`
 }
 
-func newListVarResponse() *listVarResponse {
-	return &listVarResponse{}
+func newListVarResponse() *ListVarResponse {
+	return &ListVarResponse{}
 }

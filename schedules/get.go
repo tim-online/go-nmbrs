@@ -56,7 +56,7 @@ func newGetAction(requestBody *GetRequest, responseBody *GetResponse) (*soap.Req
 	return request, response
 }
 
-func NewGetRequest() *GetRequest {
+func (s *Service) NewGetRequest() *GetRequest {
 	now := time.Now()
 	req := &GetRequest{
 		EmployeeID: 0,
@@ -83,20 +83,24 @@ func (r *GetRequest) init() {
 }
 
 type GetResponse struct {
-	HoursMonday        float64   `xml:"Schedule_GetResult>HoursMonday"`
-	HoursTuesday       float64   `xml:"Schedule_GetResult>HoursTuesday"`
-	HoursWednesday     float64   `xml:"Schedule_GetResult>HoursWednesday"`
-	HoursThursday      float64   `xml:"Schedule_GetResult>HoursThursday"`
-	HoursFriday        float64   `xml:"Schedule_GetResult>HoursFriday"`
-	HoursSaturday      float64   `xml:"Schedule_GetResult>HoursSaturday"`
-	HoursSunday        float64   `xml:"Schedule_GetResult>HoursSunday"`
-	HoursMonday2       float64   `xml:"Schedule_GetResult>HoursMonday2"`
-	HoursTuesday2      float64   `xml:"Schedule_GetResult>HoursTuesday2"`
-	HoursWednesday2    float64   `xml:"Schedule_GetResult>HoursWednesday2"`
-	HoursFriday2       float64   `xml:"Schedule_GetResult>HoursFriday2"`
-	HoursThursday2     float64   `xml:"Schedule_GetResult>HoursThursday2"`
-	HoursSaturday2     float64   `xml:"Schedule_GetResult>HoursSaturday2"`
-	HoursSunday2       float64   `xml:"Schedule_GetResult>HoursSunday2"`
-	ParttimePercentage float64   `xml:"Schedule_GetResult>ParttimePercentage"`
-	StartDate          *lib.Time `xml:"Schedule_GetResult>StartDate"`
+	Schedule Schedule `xml:"Schedule_GetResult"`
+}
+
+type Schedule struct {
+	HoursMonday        float64   `xml:"HoursMonday"`
+	HoursTuesday       float64   `xml:"HoursTuesday"`
+	HoursWednesday     float64   `xml:"HoursWednesday"`
+	HoursThursday      float64   `xml:"HoursThursday"`
+	HoursFriday        float64   `xml:"HoursFriday"`
+	HoursSaturday      float64   `xml:"HoursSaturday"`
+	HoursSunday        float64   `xml:"HoursSunday"`
+	HoursMonday2       float64   `xml:"HoursMonday2"`
+	HoursTuesday2      float64   `xml:"HoursTuesday2"`
+	HoursWednesday2    float64   `xml:"HoursWednesday2"`
+	HoursFriday2       float64   `xml:"HoursFriday2"`
+	HoursThursday2     float64   `xml:"HoursThursday2"`
+	HoursSaturday2     float64   `xml:"HoursSaturday2"`
+	HoursSunday2       float64   `xml:"HoursSunday2"`
+	ParttimePercentage float64   `xml:"ParttimePercentage"`
+	StartDate          *lib.Time `xml:"StartDate"`
 }

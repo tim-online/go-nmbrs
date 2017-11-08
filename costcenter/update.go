@@ -95,6 +95,6 @@ type CostCenter struct {
 }
 
 type Kostensoort struct {
-	Code        int `xml:"Code"`
-	Description int `xml:"Description"`
+	Code        int    `xml:"Code"`
+	Description string `xml:"Description"`
 }

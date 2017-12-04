@@ -81,11 +81,11 @@ type UpdateResponse struct {
 }
 
 type EmployeeCostCenter struct {
-	ID          int          `xml:"Id,omitempty"`
-	CostCenter  *CostCenter  `xml:"CostCenter,omitempty"`
-	Kostensoort *Kostensoort `xml:"Kostensoort,omitempty"`
-	Percentage  float64      `xml:"Percentage"`
-	Default     bool         `xml:"Default"`
+	ID          int         `xml:"Id,omitempty"`
+	CostCenter  CostCenter  `xml:"CostCenter,omitempty"`
+	Kostensoort Kostensoort `xml:"Kostensoort,omitempty"`
+	Percentage  float64     `xml:"Percentage"`
+	Default     bool        `xml:"Default"`
 }
 
 type CostCenter struct {

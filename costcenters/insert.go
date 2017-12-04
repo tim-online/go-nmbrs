@@ -79,7 +79,7 @@ type InsertResponse struct {
 }
 
 type Kostenplaats struct {
-	Code        int    `xml:"Code"`
+	Code        string `xml:"Code"`
 	Description string `xml:"Description"`
 	Id          int    `xml:"Id"`
 }

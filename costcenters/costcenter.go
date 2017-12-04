@@ -2,6 +2,6 @@ package costcenters
 
 type CostCenter struct {
 	ID          int    `xml:"Id"`
-	Code        int    `xml:"Code"`
+	Code        string `xml:"Code"`
 	Description string `xml:"Description"`
 }

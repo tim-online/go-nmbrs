@@ -21,10 +21,10 @@ func TestUpdate(t *testing.T) {
 
 	updateRequest := NewUpdateRequest()
 	updateRequest.EmployeeID = 1200
-	updateRequest.CostCenteren = []EmployeeCostCenter{
+	updateRequest.CostCenters = []EmployeeCostCenter{
 		EmployeeCostCenter{
 			CostCenter: CostCenter{
-				Code:        12,
+				Code:        "12",
 				Description: "test",
 			},
 			Percentage: 0.12,

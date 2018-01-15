@@ -89,12 +89,12 @@ type EmployeeCostCenter struct {
 }
 
 type CostCenter struct {
-	Code        int    `xml:"Code"`
+	Code        string `xml:"Code"`
 	Description string `xml:"Description"`
 	ID          int    `xml:"Id,omitempty"`
 }
 
 type Kostensoort struct {
-	Code        int    `xml:"Code"`
+	Code        string `xml:"Code"`
 	Description string `xml:"Description"`
 }

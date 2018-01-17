@@ -9,6 +9,7 @@ import (
 	"github.com/tim-online/go-nmbrs/costcenter"
 	"github.com/tim-online/go-nmbrs/costcenters"
 	"github.com/tim-online/go-nmbrs/days"
+	"github.com/tim-online/go-nmbrs/debtors"
 	"github.com/tim-online/go-nmbrs/employees"
 	"github.com/tim-online/go-nmbrs/hourcodes"
 	"github.com/tim-online/go-nmbrs/hours"
@@ -40,6 +41,7 @@ type Client struct {
 	HourCodes   *hourcodes.Service
 	Schedules   *schedules.Service
 	CostCenter  *costcenter.Service
+	Debtors     *debtors.Service
 }
 
 // NewClient returns a new Nmbrs API client
@@ -83,6 +85,8 @@ func NewClient(httpClient *http.Client, username string, token string) *Client {
 	c.CostCenter.Client = c.client
 
 	// DebtorService
+	c.Debtors = debtors.NewService(authHeader)
+	c.Debtors.Client = c.client
 
 	return c
 }

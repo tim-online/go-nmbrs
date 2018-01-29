@@ -12,6 +12,7 @@ type Company struct {
 	// XMLName             xml.Name `xml:"Company"`
 	ID                  int     `xml:"ID"`
 	Number              int     `xml:"Number"`
+	Name                string  `xml:"Name"`
 	PhoneNumber         string  `xml:"PhoneNumber"`
 	FaxNumber           string  `xml:"FaxNumber"`
 	Email               string  `xml:"Email"`

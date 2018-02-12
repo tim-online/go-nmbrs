@@ -142,7 +142,7 @@
 - [ ] [LeaseCar_Insert](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=LeaseCar_Insert)
 - [ ] [LeaseCar_Stop](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=LeaseCar_Stop)
 - [ ] [LeaveBalance_Get](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=LeaveBalance_Get)
-- [ ] [Leave_GetList](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Leave_GetList)
+- [x] [Leave_GetList](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Leave_GetList)
 - [ ] [Leave_Insert](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Leave_Insert)
 - [ ] [Levensloop_Delete](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Levensloop_Delete)
 - [ ] [Levensloop_Get](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Levensloop_Get)

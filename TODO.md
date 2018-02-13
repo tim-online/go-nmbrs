@@ -270,7 +270,7 @@
 - [ ] [Reports_Business_Company_CompanyWageComponentsPerPeriod](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Business_Company_CompanyWageComponentsPerPeriod)
 - [ ] [Reports_Business_Company_CompanyWageComponentsPerRun](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Business_Company_CompanyWageComponentsPerRun)
 - [ ] [Reports_Business_Company_CompanyWageComponentsPerRunPeriod](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Business_Company_CompanyWageComponentsPerRunPeriod)
-- [ ] [Reports_Business_Company_EmployeeWageComponentsPerRun](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Business_Company_EmployeeWageComponentsPerRun)
+- [x] [Reports_Business_Company_EmployeeWageComponentsPerRun](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Business_Company_EmployeeWageComponentsPerRun)
 - [ ] [Reports_Business_Company_EmployeeWageComponentsPerRunPeriod](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Business_Company_EmployeeWageComponentsPerRunPeriod)
 - [ ] [Reports_Business_EmployeeAbsence](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Business_EmployeeAbsence)
 - [ ] [Reports_Business_EmployeeContracts](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Business_EmployeeContracts)

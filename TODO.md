@@ -34,7 +34,7 @@
 - [ ] [Reports_GetWageCodesByYear](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=Reports_GetWageCodesByYear)
 - [ ] [RunRequest_GetList](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=RunRequest_GetList)
 - [ ] [RunRequest_Insert](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=RunRequest_Insert)
-- [ ] [Run_GetList](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=Run_GetList)
+- [x] [Run_GetList](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=Run_GetList)
 - [ ] [SVW_GetCurrent](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=SVW_GetCurrent)
 - [ ] [SVW_UpdateCurrent](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=SVW_UpdateCurrent)
 - [ ] [SalaryDocuments_GetAllPayslipsPDFByRunCompany](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=SalaryDocuments_GetAllPayslipsPDFByRunCompany)

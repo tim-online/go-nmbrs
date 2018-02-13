@@ -30,7 +30,7 @@
 - [ ] [Reports_GetPayslipByRunCompany](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=Reports_GetPayslipByRunCompany)
 - [ ] [Reports_GetPayslipByRunCompany_v2](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=Reports_GetPayslipByRunCompany_v2)
 - [ ] [Reports_GetWageCodesByRunCompany](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=Reports_GetWageCodesByRunCompany)
-- [ ] [Reports_GetWageCodesByRunCompany_v2](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=Reports_GetWageCodesByRunCompany_v2)
+- [x] [Reports_GetWageCodesByRunCompany_v2](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=Reports_GetWageCodesByRunCompany_v2)
 - [ ] [Reports_GetWageCodesByYear](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=Reports_GetWageCodesByYear)
 - [ ] [RunRequest_GetList](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=RunRequest_GetList)
 - [ ] [RunRequest_Insert](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=RunRequest_Insert)

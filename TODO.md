@@ -63,7 +63,7 @@
 - [ ] [WageTax_GetList](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=WageTax_GetList)
 - [ ] [WageTax_GetXML](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=WageTax_GetXML)
 - [ ] [WageTax_SetSentExternal](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=WageTax_SetSentExternal)
-- [ ] [WorkCost_GetList](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=WorkCost_GetList)
+- [x] [WorkCost_GetList](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=WorkCost_GetList)
 - [ ] [WorkCost_Insert](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=WorkCost_Insert)
 
 ## EmployeeService

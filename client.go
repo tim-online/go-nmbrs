@@ -11,6 +11,7 @@ import (
 	"github.com/tim-online/go-nmbrs/days"
 	"github.com/tim-online/go-nmbrs/debtors"
 	"github.com/tim-online/go-nmbrs/employees"
+	"github.com/tim-online/go-nmbrs/fileexplorer"
 	"github.com/tim-online/go-nmbrs/hourcodes"
 	"github.com/tim-online/go-nmbrs/hours"
 	"github.com/tim-online/go-nmbrs/reports"
@@ -33,17 +34,18 @@ type Client struct {
 	token    string
 
 	// Services used for communicating with the API
-	Companies   *companies.Service
-	Employees   *employees.Service
-	Days        *days.Service
-	Hours       *hours.Service
-	Wages       *wages.Service
-	CostCenters *costcenters.Service
-	HourCodes   *hourcodes.Service
-	Schedules   *schedules.Service
-	CostCenter  *costcenter.Service
-	Debtors     *debtors.Service
-	Reports     *reports.Service
+	Companies    *companies.Service
+	Employees    *employees.Service
+	Days         *days.Service
+	Hours        *hours.Service
+	Wages        *wages.Service
+	CostCenters  *costcenters.Service
+	HourCodes    *hourcodes.Service
+	Schedules    *schedules.Service
+	CostCenter   *costcenter.Service
+	Debtors      *debtors.Service
+	Reports      *reports.Service
+	FileExplorer *fileexplorer.Service
 }
 
 // NewClient returns a new Nmbrs API client
@@ -69,6 +71,8 @@ func NewClient(httpClient *http.Client, username string, token string) *Client {
 	c.Companies.Client = c.client
 	c.CostCenters = costcenters.NewService(authHeader)
 	c.CostCenters.Client = c.client
+	c.FileExplorer = fileexplorer.NewService(authHeader)
+	c.FileExplorer.Client = c.client
 
 	// EmployeeService
 	c.Employees = employees.NewService(authHeader)

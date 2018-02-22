@@ -79,6 +79,6 @@ func NewDepartment_GetCurrentResponse() *Department_GetCurrentResponse {
 
 type Department struct {
 	ID          int    `xml:"Id"`
-	Code        string `xml:"Code"`
+	Code        int    `xml:"Code"`
 	Description string `xml:"Description"`
 }

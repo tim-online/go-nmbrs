@@ -11,7 +11,7 @@
 - [ ] [Company_GetCurrentPeriod](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=Company_GetCurrentPeriod)
 - [x] [CostCenter_GetList](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=CostCenter_GetList)
 - [ ] [CostCenter_Insert](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=CostCenter_Insert)
-- [ ] [CostUnit_GetList](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=CostUnit_GetList)
+- [x] [CostUnit_GetList](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=CostUnit_GetList)
 - [ ] [DefaultEmployeeTemplates_GetByCompany](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=DefaultEmployeeTemplates_GetByCompany)
 - [ ] [FileExplorer_UploadFile](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=FileExplorer_UploadFile)
 - [x] [HourModel_GetHourCodes](https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=HourModel_GetHourCodes)

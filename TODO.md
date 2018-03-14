@@ -225,7 +225,7 @@
 - [ ] [Debtor_IsOwner](https://api.nmbrs.nl/soap/v2.1/DebtorService.asmx?op=Debtor_IsOwner)
 - [ ] [Debtor_Update](https://api.nmbrs.nl/soap/v2.1/DebtorService.asmx?op=Debtor_Update)
 - [ ] [Department_Delete](https://api.nmbrs.nl/soap/v2.1/DebtorService.asmx?op=Department_Delete)
-- [ ] [Department_GetList](https://api.nmbrs.nl/soap/v2.1/DebtorService.asmx?op=Department_GetList)
+- [x] [Department_GetList](https://api.nmbrs.nl/soap/v2.1/DebtorService.asmx?op=Department_GetList)
 - [ ] [Department_Insert](https://api.nmbrs.nl/soap/v2.1/DebtorService.asmx?op=Department_Insert)
 - [ ] [Department_Update](https://api.nmbrs.nl/soap/v2.1/DebtorService.asmx?op=Department_Update)
 - [ ] [Function_Delete](https://api.nmbrs.nl/soap/v2.1/DebtorService.asmx?op=Function_Delete)

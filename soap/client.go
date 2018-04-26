@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	mediaType = "text/xml"
+	mediaType = "application/soap+xml"
 	charset   = "utf-8"
 )
 

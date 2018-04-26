@@ -36,7 +36,7 @@ func CheckResponse(r *http.Response) error {
 	// convert xml to struct
 	err = xml.Unmarshal(data, errorResponse)
 	if err != nil {
-		errorResponse.Message = fmt.Sprintf("Malformed json response")
+		errorResponse.Message = fmt.Sprintf("Malformed xml response")
 		return errorResponse
 	}
 

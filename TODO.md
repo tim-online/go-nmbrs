@@ -108,7 +108,7 @@
 - [ ] [Department_GetAll_AllEmployeesByCompany](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Department_GetAll_AllEmployeesByCompany)
 - [ ] [Department_GetCurrent](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Department_GetCurrent)
 - [ ] [Department_UpdateCurrent](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Department_UpdateCurrent)
-- [ ] [EmployeeDocument_UploadDocument](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=EmployeeDocument_UploadDocument)
+- [x] [EmployeeDocument_UploadDocument](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=EmployeeDocument_UploadDocument)
 - [ ] [Employee_GetCurrent](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Employee_GetCurrent)
 - [ ] [Employee_Insert](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Employee_Insert)
 - [ ] [Employee_InsertBasedOnDefault](https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Employee_InsertBasedOnDefault)

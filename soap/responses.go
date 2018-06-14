@@ -75,8 +75,8 @@ func checkContentType(response *http.Response) error {
 	// check content-type (application/soap+xml; charset=utf-8)
 	header := response.Header.Get("Content-Type")
 	contentType := strings.Split(header, ";")[0]
-	if contentType != "application/soap+xml" {
-		return fmt.Errorf("Expected Content-Type \"application/soap+xml\", got \"%s\"", contentType)
+	if contentType != "text/xml" {
+		return fmt.Errorf("Expected Content-Type \"text/xml\", got \"%s\"", contentType)
 	}
 
 	return nil

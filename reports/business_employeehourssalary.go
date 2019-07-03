@@ -153,7 +153,7 @@ func (r *BusinessEmployeeHoursSalaryItem) UnmarshalXML(d *xml.Decoder, start xml
 	}
 
 	in.ParttimePercentage = strings.Replace(in.ParttimePercentage, ",", ".", -1)
-	if in.ParttimePercentage != "-" {
+	if in.ParttimePercentage != "-" && in.ParttimePercentage != "" {
 		in.Alias.ParttimePercentage, err = strconv.ParseFloat(in.ParttimePercentage, 64)
 		if err != nil {
 			return err
@@ -161,7 +161,7 @@ func (r *BusinessEmployeeHoursSalaryItem) UnmarshalXML(d *xml.Decoder, start xml
 	}
 
 	in.FTE = strings.Replace(in.FTE, ",", ".", -1)
-	if in.FTE != "-" {
+	if in.FTE != "-" && in.FTE != "" {
 		in.Alias.FTE, err = strconv.ParseFloat(in.FTE, 64)
 		if err != nil {
 			return err
@@ -169,7 +169,7 @@ func (r *BusinessEmployeeHoursSalaryItem) UnmarshalXML(d *xml.Decoder, start xml
 	}
 
 	in.TotalHoursWeek = strings.Replace(in.TotalHoursWeek, ",", ".", -1)
-	if in.TotalHoursWeek != "-" {
+	if in.TotalHoursWeek != "-" && in.TotalHoursWeek != "" {
 		in.Alias.TotalHoursWeek, err = strconv.ParseFloat(in.TotalHoursWeek, 64)
 		if err != nil {
 			return err
@@ -177,7 +177,7 @@ func (r *BusinessEmployeeHoursSalaryItem) UnmarshalXML(d *xml.Decoder, start xml
 	}
 
 	in.TotalHoursPeriod = strings.Replace(in.TotalHoursPeriod, ",", ".", -1)
-	if in.TotalHoursPeriod != "-" {
+	if in.TotalHoursPeriod != "-" && in.TotalHoursPeriod != "" {
 		in.Alias.TotalHoursPeriod, err = strconv.ParseFloat(in.TotalHoursPeriod, 64)
 		if err != nil {
 			return err
@@ -185,7 +185,7 @@ func (r *BusinessEmployeeHoursSalaryItem) UnmarshalXML(d *xml.Decoder, start xml
 	}
 
 	in.SalaryValue = strings.Replace(in.SalaryValue, ",", ".", -1)
-	if in.SalaryValue != "-" {
+	if in.SalaryValue != "-" && in.SalaryValue != "" {
 		in.Alias.SalaryValue, err = strconv.ParseFloat(in.SalaryValue, 64)
 		if err != nil {
 			return err

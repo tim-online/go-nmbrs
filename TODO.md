@@ -246,7 +246,6 @@
 - [ ] [Reports_Accountant_CompanySalarySettings](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Accountant_CompanySalarySettings)
 - [ ] [Reports_Accountant_CompanyWageTaxSettings](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Accountant_CompanyWageTaxSettings)
 - [ ] [Reports_Accountant_CompanyWorkflowSettings](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Accountant_CompanyWorkflowSettings)
-- [x] [Reports_Accountant_Company_CompanyJournalReport](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Accountant_Company_CompanyJournalReport)
 - [ ] [Reports_Accountant_Company_CompanyWageComponentsPerPeriod](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Accountant_Company_CompanyWageComponentsPerPeriod)
 - [ ] [Reports_Accountant_Company_CompanyWageComponentsPerRun](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Accountant_Company_CompanyWageComponentsPerRun)
 - [ ] [Reports_Accountant_Company_CompanyWageComponentsPerRunPeriod](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Accountant_Company_CompanyWageComponentsPerRunPeriod)

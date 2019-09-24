@@ -265,7 +265,7 @@
 - [ ] [Reports_Accountant_EmployeeSVWSettings](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Accountant_EmployeeSVWSettings)
 - [ ] [Reports_Accountant_EmployeeWageComponentsPerPeriod](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Accountant_EmployeeWageComponentsPerPeriod)
 - [ ] [Reports_Accountant_EmployeeWageTaxSettings](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Accountant_EmployeeWageTaxSettings)
-- [ ] [Reports_Business_Company_CompanyJournalReport](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Business_Company_CompanyJournalReport)
+- [x] [Reports_Business_Company_CompanyJournalReport](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Business_Company_CompanyJournalReport)
 - [ ] [Reports_Business_Company_CompanyWageComponentsPerPeriod](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Business_Company_CompanyWageComponentsPerPeriod)
 - [ ] [Reports_Business_Company_CompanyWageComponentsPerRun](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Business_Company_CompanyWageComponentsPerRun)
 - [ ] [Reports_Business_Company_CompanyWageComponentsPerRunPeriod](https://api.nmbrs.nl/soap/v2.1/ReportService.asmx?op=Reports_Business_Company_CompanyWageComponentsPerRunPeriod)

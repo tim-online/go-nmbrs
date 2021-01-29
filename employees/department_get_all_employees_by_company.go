@@ -71,12 +71,14 @@ func NewDepartment_GetAll_AllEmployeesByCompanyRequest(companyID int) *Departmen
 }
 
 type Department_GetAll_AllEmployeesByCompanyResponse struct {
-	EmployeeDepartmentItems []EmployeeDepartmentItem `xml:"Department_GetAll_AllEmployeesByCompanyResult>EmployeeDepartmentItem"`
+	EmployeeDepartmentItems EmployeeDepartmentItems `xml:"Department_GetAll_AllEmployeesByCompanyResult>EmployeeDepartmentItem"`
 }
 
 func NewDepartment_GetAll_AllEmployeesByCompanyResponse() *Department_GetAll_AllEmployeesByCompanyResponse {
 	return &Department_GetAll_AllEmployeesByCompanyResponse{}
 }
+
+type EmployeeDepartmentItems []EmployeeDepartmentItem
 
 type EmployeeDepartmentItem struct {
 	EmployeeID  int `xml:"EmployeeId"`

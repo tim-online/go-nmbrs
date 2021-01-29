@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"net/url"
 
+	"github.com/tim-online/go-nmbrs/address"
 	"github.com/tim-online/go-nmbrs/auth"
 	"github.com/tim-online/go-nmbrs/companies"
 	"github.com/tim-online/go-nmbrs/costcenter"
@@ -46,6 +47,7 @@ type Client struct {
 	Debtors      *debtors.Service
 	Reports      *reports.Service
 	FileExplorer *fileexplorer.Service
+	Address      *address.Service
 }
 
 // NewClient returns a new Nmbrs API client
@@ -73,6 +75,8 @@ func NewClient(httpClient *http.Client, username string, token string) *Client {
 	c.CostCenters.Client = c.client
 	c.FileExplorer = fileexplorer.NewService(authHeader)
 	c.FileExplorer.Client = c.client
+	c.Address = address.NewService(authHeader)
+	c.Address.Client = c.client
 
 	// EmployeeService
 	c.Employees = employees.NewService(authHeader)

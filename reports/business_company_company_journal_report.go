@@ -145,6 +145,6 @@ type BusinessCompanyCompanyJournalReportItem struct {
 	Percentage           string
 	GeneralLedgerAccount string
 	ComponentName        string
-	Debit                float64
-	Credit               float64
+	Debit                soap.Number
+	Credit               soap.Number
 }

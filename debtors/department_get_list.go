@@ -79,6 +79,6 @@ func NewDepartment_GetListResponse() *Department_GetListResponse {
 
 type Department struct {
 	ID          int
-	Code        int
+	Code        string
 	Description string
 }

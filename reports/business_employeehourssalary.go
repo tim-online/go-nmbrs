@@ -110,27 +110,31 @@ func (r *BusinessEmployeeHoursSalaryReport) UnmarshalXML(d *xml.Decoder, start x
 type BusinessEmployeeHoursSalaryItems []BusinessEmployeeHoursSalaryItem
 
 type BusinessEmployeeHoursSalaryItem struct {
-	EmployeeID         int
-	EmployeeNumber     string
-	EmployeeName       string
-	CompanyID          int
-	CompanyNumber      string
-	CompanyName        string
-	DebtorID           int
-	DebtorNumber       string
-	DebtorName         string
-	Initials           string
-	Firstname          string
-	FirstnameInFull    string
-	Surname            string
-	ParttimePercentage float64
-	FTE                float64
-	TotalHoursWeek     float64
-	TotalHoursPeriod   float64
-	SalaryType         string
-	SalaryValue        float64
-	Function           string
-	Department         string
+	EmployeeID         int     `xml:"EmployeeID"`
+	EmployeeNumber     string  `xml:"EmployeeNumber"`
+	EmployeeName       string  `xml:"EmployeeName"`
+	CompanyID          int     `xml:"CompanyID"`
+	CompanyNumber      string  `xml:"CompanyNumber"`
+	CompanyName        string  `xml:"CompanyName"`
+	DebtorID           int     `xml:"DebtorID"`
+	DebtorNumber       string  `xml:"DebtorNumber"`
+	DebtorName         string  `xml:"DebtorName"`
+	Initials           string  `xml:"Initials"`
+	Firstname          string  `xml:"Firstname"`
+	FirstnameInFull    string  `xml:"FirstnameInFull"`
+	Surname            string  `xml:"Surname"`
+	ParttimePercentage float64 `xml:"ParttimePercentage"`
+	FTE                float64 `xml:"FTE"`
+	TotalHoursWeek     float64 `xml:"TotalHoursWeek"`
+	TotalHoursPeriod   float64 `xml:"TotalHoursPeriod"`
+	SalaryType         string  `xml:"SalaryType"`
+	SalaryValue        float64 `xml:"SalaryValue"`
+	Function           string  `xml:"Function"`
+	Department         string  `xml:"Department"`
+	CostCenter         string  `xml:"CostCenter"`
+	InServiceDate      string  `xml:"InServiceDate"`
+	Prefix             string  `xml:"Prefix"`
+	OutServiceDate     string  `xml:"OutServiceDate"`
 }
 
 func (r *BusinessEmployeeHoursSalaryItem) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

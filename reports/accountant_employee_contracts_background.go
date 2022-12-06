@@ -68,39 +68,3 @@ type AccountantEmployeeContractsBackgroundResponse struct {
 func newAccountantEmployeeContractsBackgroundResponse() *AccountantEmployeeContractsBackgroundResponse {
 	return &AccountantEmployeeContractsBackgroundResponse{}
 }
-
-type AccountantEmployeeContracts []AccountantEmployeeContract
-
-type AccountantEmployeeContract struct {
-	EmployeeID        string `xml:"EmployeeID"`
-	EmployeeNumber    string `xml:"EmployeeNumber"`
-	EmployeeName      string `xml:"EmployeeName"`
-	CompanyID         string `xml:"CompanyID"`
-	CompanyNumber     string `xml:"CompanyNumber"`
-	CompanyName       string `xml:"CompanyName"`
-	DebtorID          string `xml:"DebtorID"`
-	DebtorNumber      string `xml:"DebtorNumber"`
-	DebtorName        string `xml:"DebtorName"`
-	ServiceStartDate  string `xml:"ServiceStartDate"`
-	StartPeriod       string `xml:"StartPeriod"`
-	TotalPeriod       string `xml:"TotalPeriod"`
-	ContractStartDate string `xml:"ContractStartDate"`
-	Function          string `xml:"Function"`
-	Department        string `xml:"Department"`
-	Manager           string `xml:"Manager"`
-	ContractDuration  string `xml:"ContractDuration"`
-	ContractHours     struct {
-		Nil string `xml:"nil,attr"`
-	} `xml:"ContractHours"`
-	NatureOfEmployment string `xml:"NatureOfEmployment"`
-	ContractType       string `xml:"ContractType"`
-	HasWrittenContract string `xml:"HasWrittenContract"`
-	SeniorityDate      struct {
-		Nil string `xml:"nil,attr"`
-	} `xml:"SeniorityDate"`
-	InfluenceCode            string `xml:"InfluenceCode"`
-	OutOfServiceDate         string `xml:"OutOfServiceDate"`
-	ReasonEndServiceInterval string `xml:"ReasonEndServiceInterval"`
-	ContractEndDate          string `xml:"ContractEndDate"`
-	TrialPeriod              string `xml:"TrialPeriod"`
-}

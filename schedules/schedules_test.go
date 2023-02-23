@@ -21,7 +21,7 @@ const (
 var (
 	mux    *http.ServeMux
 	server *httptest.Server
-	// authHeader *auth.AuthHeader
+	// authHeader *auth.AuthHeaderWithDomain
 	service *schedules.Service
 )
 

@@ -33,6 +33,7 @@ type Client struct {
 
 	username string
 	token    string
+	domain   string
 
 	// Services used for communicating with the API
 	Companies    *companies.Service
@@ -51,7 +52,7 @@ type Client struct {
 }
 
 // NewClient returns a new Nmbrs API client
-func NewClient(httpClient *http.Client, username string, token string) *Client {
+func NewClient(httpClient *http.Client, username string, token string, domain string) *Client {
 	if httpClient == nil {
 		httpClient = http.DefaultClient
 	}
@@ -64,9 +65,10 @@ func NewClient(httpClient *http.Client, username string, token string) *Client {
 		},
 	}
 
-	authHeader := auth.NewAuthHeader()
+	authHeader := auth.NewAuthHeaderWithDomain()
 	authHeader.Username = username
 	authHeader.Token = token
+	authHeader.Domain = domain
 
 	// CompanyService
 	c.Companies = companies.NewService(authHeader)

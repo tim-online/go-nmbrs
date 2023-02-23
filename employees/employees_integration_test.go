@@ -14,7 +14,7 @@ import (
 )
 
 var (
-	authHeader *auth.AuthHeader
+	authHeader *auth.AuthHeaderWithDomain
 )
 
 func setup() {

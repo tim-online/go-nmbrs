@@ -7,7 +7,7 @@ import (
 	"github.com/tim-online/go-nmbrs/soap"
 )
 
-// https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx?op=CostCenter_Insert
+// https://api.nmbrs.nl/soap/v3/CompanyService.asmx?op=CostCenter_Insert
 
 const (
 	insertAction = "CostCenter_Insert"

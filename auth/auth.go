@@ -19,3 +19,23 @@ func NewAuthHeader() *AuthHeader {
 		Token:    "",
 	}
 }
+
+type AuthHeaderWithDomain struct {
+	XMLName xml.Name
+
+	Username string `xml:"Username"`
+	Token    string `xml:"Token"`
+	Domain   string `xml:"Domain"`
+}
+
+func NewAuthHeaderWithDomain() *AuthHeaderWithDomain {
+	return &AuthHeaderWithDomain{
+		XMLName: xml.Name{
+			Space: "",
+			Local: "AuthHeaderWithDomain",
+		},
+		Username: "",
+		Token:    "",
+		Domain:   "",
+	}
+}

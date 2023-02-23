@@ -1,6 +1,6 @@
 package wages
 
-// https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=WageComponentVar_Get
+// https://api.nmbrs.nl/soap/v3/EmployeeService.asmx?op=WageComponentVar_Get
 
 import (
 	"encoding/xml"

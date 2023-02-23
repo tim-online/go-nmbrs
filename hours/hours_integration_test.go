@@ -13,7 +13,7 @@ import (
 )
 
 var (
-	authHeader *auth.AuthHeader
+	authHeader *auth.AuthHeaderWithDomain
 	employeeID = 540897
 	period     = 2
 	year       = 2016

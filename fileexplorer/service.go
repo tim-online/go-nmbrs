@@ -9,9 +9,9 @@ import (
 )
 
 const (
-	xmlns           = "https://api.nmbrs.nl/soap/v2.1/CompanyService"
-	Endpoint        = "https://api.nmbrs.nl/soap/v2.1/CompanyService.asmx"
-	SandboxEndpoint = "https://api-sandbox.nmbrs.nl/soap/v2.1/CompanyService.asmx"
+	xmlns           = "https://api.nmbrs.nl/soap/v3/CompanyService"
+	Endpoint        = "https://api.nmbrs.nl/soap/v3/CompanyService.asmx"
+	SandboxEndpoint = "https://api-sandbox.nmbrs.nl/soap/v3/CompanyService.asmx"
 )
 
 // Service handles communication with the employee related methods of the Nmbrs
@@ -19,19 +19,19 @@ const (
 type Service struct {
 	Client     *soap.Client
 	Endpoint   *url.URL
-	AuthHeader *auth.AuthHeader
+	AuthHeader *auth.AuthHeaderWithDomain
 }
 
 // NewService returns a new employee service with a default SOAP client and a
 // copy of the auth header
-func NewService(authHeader *auth.AuthHeader) *Service {
+func NewService(authHeader *auth.AuthHeaderWithDomain) *Service {
 	endpoint, err := url.ParseRequestURI(Endpoint)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	// set correct xmlns
-	authHeaderCopy := &auth.AuthHeader{}
+	authHeaderCopy := &auth.AuthHeaderWithDomain{}
 	*authHeaderCopy = *authHeader
 	authHeaderCopy.XMLName.Space = xmlns
 

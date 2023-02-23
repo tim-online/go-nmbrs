@@ -9,7 +9,7 @@ import (
 	"github.com/tim-online/go-nmbrs/soap"
 )
 
-// https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Schedule_Get
+// https://api.nmbrs.nl/soap/v3/EmployeeService.asmx?op=Schedule_Get
 
 const (
 	getAction = "Schedule_Get"

@@ -7,7 +7,7 @@ import (
 	"github.com/tim-online/go-nmbrs/soap"
 )
 
-// https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=CostCenter_GetCurrent
+// https://api.nmbrs.nl/soap/v3/EmployeeService.asmx?op=CostCenter_GetCurrent
 
 const (
 	getCurrentAction = "CostCenter_GetCurrent"

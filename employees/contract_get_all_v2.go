@@ -8,7 +8,7 @@ import (
 	"github.com/tim-online/go-nmbrs/soap"
 )
 
-// https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=Contract_GetAll_v2
+// https://api.nmbrs.nl/soap/v3/EmployeeService.asmx?op=Contract_GetAll_v2
 
 const (
 	Contract_GetAll_v2Action = "Contract_GetAll_v2"

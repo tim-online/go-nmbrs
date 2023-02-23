@@ -12,7 +12,7 @@ import (
 	"github.com/tim-online/go-nmbrs/soap"
 )
 
-// https://api.nmbrs.nl/soap/v2.1/EmployeeService.asmx?op=HourComponentVar_Get
+// https://api.nmbrs.nl/soap/v3/EmployeeService.asmx?op=HourComponentVar_Get
 func TestListVar(t *testing.T) {
 	setup()
 	defer teardown()
@@ -25,7 +25,7 @@ func TestListVar(t *testing.T) {
 		// Test meta data of incoming request
 		testMethod(t, r, "POST")
 		testHeader(t, r, "Content-Type", "text/xml; charset=utf-8")
-		testHeader(t, r, "Soapaction", "https://api.nmbrs.nl/soap/v2.1/EmployeeService/HourComponentVar_Get")
+		testHeader(t, r, "Soapaction", "https://api.nmbrs.nl/soap/v3/EmployeeService/HourComponentVar_Get")
 
 		// convert incoming request back to struct
 		req := soap.NewRequest()
@@ -49,7 +49,7 @@ func TestListVar(t *testing.T) {
 		fmt.Fprint(w, ` <?xml version="1.0" encoding="utf-8"?>
 			<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
 				<soap:Body>
-					<HourComponentVar_GetResponse xmlns="https://api.nmbrs.nl/soap/v2.1/EmployeeService">
+					<HourComponentVar_GetResponse xmlns="https://api.nmbrs.nl/soap/v3/EmployeeService">
 						<HourComponentVar_GetResult>
 							<HourComponent>
 								<Id>12</Id>

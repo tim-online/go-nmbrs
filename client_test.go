@@ -11,10 +11,17 @@ func TestDing(t *testing.T) {
 	// get username & password
 	username := os.Getenv("NMBRS_USERNAME")
 	token := os.Getenv("NMBRS_TOKEN")
+	domain := os.Getenv("NMBRS_DOMAIN")
 
 	// build client
-	client := NewClient(nil, username, token)
+	client := NewClient(nil, username, token, domain)
 	client.client.Debug = true
+
+	resp, err := client.Companies.List()
+	if err != nil {
+		t.Error(err)
+		return
+	}
 
 	// request all companies this token has access to
 	// companyID := 65757
@@ -54,7 +61,17 @@ func TestDing(t *testing.T) {
 	// 	panic(err)
 	// }
 
-	// resp, err := client.Reports.BusinessCompanyEmployeeWageComponentsPerRun(companyID, year)
+	// companyID := 65754
+	// startPeriod := 1
+	// endPeriod := 5
+	// year := 2022
+	// resp, err := client.Reports.JournalsReportByCompanyBackground(companyID, startPeriod, endPeriod, year)
+	// if err != nil {
+	// 	panic(err)
+	// }
+
+	// taskID := "ef5bc4d9-17bd-4c94-9e41-2cec055b1209"
+	// resp, err := client.Reports.BackgroundTaskResult(taskID)
 	// if err != nil {
 	// 	panic(err)
 	// }
@@ -69,10 +86,10 @@ func TestDing(t *testing.T) {
 	// 	panic(err)
 	// }
 
-	resp, err := client.Companies.ReportGetPayslipByRunCompanyV2(65756, 101453, 2020)
-	if err != nil {
-		panic(err)
-	}
+	// resp, err := client.Companies.ReportGetPayslipByRunCompanyV2(65756, 101453, 2020)
+	// if err != nil {
+	// 	panic(err)
+	// }
 
 	// employeeID := 603463
 	// name := "test.txt"

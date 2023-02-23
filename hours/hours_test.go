@@ -21,7 +21,7 @@ var (
 	mux    *http.ServeMux
 	client *Service
 	server *httptest.Server
-	// authHeader *auth.AuthHeader
+	// authHeader *auth.AuthHeaderWithDomain
 	service *Service
 )
 

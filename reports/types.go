@@ -4,6 +4,8 @@ import (
 	"encoding/xml"
 	"strconv"
 	"strings"
+
+	"github.com/tim-online/go-nmbrs/lib"
 )
 
 type BusinessEmployeeHoursSalaryItems []BusinessEmployeeHoursSalaryItem
@@ -96,4 +98,34 @@ func (r *BusinessEmployeeHoursSalaryItem) UnmarshalXML(d *xml.Decoder, start xml
 	}
 
 	return nil
+}
+
+type EmployeeHoursSalaryReport struct {
+	BusinessEmployeeHoursSalaryItems `xml:"EmployeeHoursSalaryReport>Employee"`
+}
+
+type BusinessEmployeeContractReport struct {
+	BusinessEmployeeContracts `xml:"EmployeeContractReport>Employee"`
+}
+
+type BusinessEmployeeContracts []BusinessEmployeeContract
+
+type BusinessEmployeeContract struct {
+	EmployeeID        int
+	EmployeeNumber    int
+	EmployeeName      string
+	CompanyID         int
+	CompanyNumber     int
+	CompanyName       string
+	DebtorID          int
+	DebtorNumber      int
+	DebtorName        string
+	ServiceStartDate  lib.Date
+	OutOfServiceDate  *lib.Date
+	StartPeriod       int
+	TotalPeriod       string
+	ContractStartDate lib.Date
+	ContractEndDate   *lib.Date
+	Department        string
+	Manager           string
 }

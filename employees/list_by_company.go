@@ -12,9 +12,9 @@ const (
 )
 
 // ListByCompany gets all employees that belong to a company and are active as given.
-func (s *Service) ListByCompany(companyID int, active ActiveFilter) (*listByCompanyResponse, error) {
+func (s *Service) ListByCompany(companyID int, employeeType int) (*listByCompanyResponse, error) {
 	// get a new request & response envelope
-	request, response := newListByCompanyAction(companyID, active)
+	request, response := newListByCompanyAction(companyID, employeeType)
 
 	// copy authheader to new envelope
 	request.Envelope.Header.Data = s.AuthHeader
@@ -40,9 +40,9 @@ func (s *Service) ListByCompany(companyID int, active ActiveFilter) (*listByComp
 	return listResponse, err
 }
 
-func newListByCompanyAction(companyID int, active ActiveFilter) (*soap.Request, *soap.Response) {
+func newListByCompanyAction(companyID int, employeeType int) (*soap.Request, *soap.Response) {
 	request := soap.NewRequest()
-	body := newListByCompanyRequest(companyID, active)
+	body := newListByCompanyRequest(companyID, employeeType)
 	request.Envelope.Body.Data = body
 	request.Action = url.MustParse(body.XMLName.Space + "/" + body.XMLName.Local)
 
@@ -55,19 +55,19 @@ func newListByCompanyAction(companyID int, active ActiveFilter) (*soap.Request, 
 type listByCompanyRequest struct {
 	XMLName xml.Name
 
-	CompanyID int          `xml:"CompanyId"`
-	Active    ActiveFilter `xml:"active"`
+	CompanyID    int `xml:"CompanyId"`
+	EmployeeType int `xml:"EmployeeType"`
 }
 
-func newListByCompanyRequest(companyID int, active ActiveFilter) *listByCompanyRequest {
+func newListByCompanyRequest(companyID int, employeeType int) *listByCompanyRequest {
 	return &listByCompanyRequest{
 		XMLName: xml.Name{
 			Space: xmlns,
 			Local: listByCompanyAction,
 		},
 
-		CompanyID: companyID,
-		Active:    active,
+		CompanyID:    companyID,
+		EmployeeType: employeeType,
 	}
 }
 

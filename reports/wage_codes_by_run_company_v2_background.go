@@ -1,15 +1,14 @@
-package companies
+package reports
 
 import (
 	"encoding/xml"
-	"strings"
 
 	"github.com/tim-online/go-nmbrs/lib/url"
 	"github.com/tim-online/go-nmbrs/soap"
 )
 
 const (
-	wageCodesByRunCompanyV2Action = "Reports_GetWageCodesByRunCompany_v2"
+	wageCodesByRunCompanyV2Action = "Reports_GetWageCodesByRunCompany_v2_Background"
 )
 
 // Returns the Journal Report for Company
@@ -51,9 +50,9 @@ func newWageCodesByRunCompanyV2Actions(companyID int, runID int, year int) (*soa
 type ageCodesByRunCompanyV2Request struct {
 	XMLName xml.Name
 
-	CompanyID int `xml:"CompanyId"`
-	RunID     int `xml:"RunId"`
-	Year      int `xml:"intYear"`
+	CompanyID int `xml:"companyId"`
+	RunID     int `xml:"runId"`
+	Year      int `xml:"year"`
 }
 
 func newWageCodesByRunCompanyV2Request(companyID int, runID int, year int) *ageCodesByRunCompanyV2Request {
@@ -69,49 +68,9 @@ func newWageCodesByRunCompanyV2Request(companyID int, runID int, year int) *ageC
 }
 
 type wageCodesByRunCompanyV2Response struct {
-	Report WageCodesByRunCompanyV2Report `xml:"Reports_GetWageCodesByRunCompany_v2Result"`
+	Reports_GetWageCodesByRunCompany_v2_BackgroundResult string `xml:"Reports_GetWageCodesByRunCompany_v2_BackgroundResult"`
 }
 
 func newWageCodesByRunCompanyV2Response() *wageCodesByRunCompanyV2Response {
 	return &wageCodesByRunCompanyV2Response{}
-}
-
-type WageCodesByRunCompanyV2Report struct {
-	Reports []struct {
-		EmployeeID int `xml:"employeeid"`
-		Period     int `xml:"period"`
-		Year       int `xml:"year"`
-		RunNumber  int `xml:"runnumber"`
-		Lines      []struct {
-			Code        int     `xml:"code"`
-			Description string  `xml:"description"`
-			Value       float64 `xml:"value"`
-		} `xml:"lines>line"`
-	} `xml:"report"`
-}
-
-func (r *WageCodesByRunCompanyV2Report) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
-	v := []byte{}
-	err := d.DecodeElement(&v, &start)
-	// err := d.Decode(&v)
-	if err != nil {
-		return err
-	}
-
-	s := strings.Replace(string(v), "utf-16", "utf-8", -1)
-	v = []byte(s)
-
-	// Create alias with UnmarshalXML method
-	type Alias WageCodesByRunCompanyV2Report
-	a := (*Alias)(r)
-
-	// Unmarshal alias with cdata xml
-	err = xml.Unmarshal(v, a)
-	if err != nil {
-		return err
-	}
-
-	// Copy alias back to original
-	*r = (WageCodesByRunCompanyV2Report)(*a)
-	return nil
 }

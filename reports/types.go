@@ -129,3 +129,83 @@ type BusinessEmployeeContract struct {
 	Department        string
 	Manager           string
 }
+
+type Payslips []Payslip
+
+type Payslip struct {
+	Text         string `xml:",chardata"`
+	EmployeeID   int    `xml:"employeeid"`
+	Employeename string `xml:"employeename"`
+	Period       int    `xml:"period"`
+	Year         int    `xml:"year"`
+	Run          int    `xml:"run"`
+	Header       struct {
+		Text       string `xml:",chardata"`
+		HeaderItem []struct {
+			Text  string `xml:",chardata"`
+			Key   string `xml:"key"`
+			Value string `xml:"value"`
+		} `xml:"headerItem"`
+	} `xml:"header"`
+	Lines struct {
+		Text string `xml:",chardata"`
+		Line []struct {
+			Text        string `xml:",chardata"`
+			Code        string `xml:"code"`
+			Description string `xml:"description"`
+			Group       string `xml:"group"`
+			Amount      string `xml:"amount"`
+			Value       string `xml:"value"`
+			Betaling    string `xml:"betaling"`
+			Tabel       string `xml:"tabel"`
+			Bt          string `xml:"bt"`
+			Svw         string `xml:"svw"`
+			Svwbt       string `xml:"svwbt"`
+			Werkgever   string `xml:"werkgever"`
+			Cumulative  string `xml:"cumulative"`
+		} `xml:"line"`
+	} `xml:"lines"`
+	Reservations struct {
+		Text        string `xml:",chardata"`
+		Reservation []struct {
+			Text  string `xml:",chardata"`
+			Key   string `xml:"key"`
+			Value string `xml:"value"`
+			Saldo string `xml:"saldo"`
+		} `xml:"reservation"`
+	} `xml:"reservations"`
+	LeaveList struct {
+		Text  string `xml:",chardata"`
+		Leave []struct {
+			Text  string `xml:",chardata"`
+			Type  string `xml:"type,attr"`
+			Key   string `xml:"key"`
+			Value []struct {
+				Text string `xml:",chardata"`
+				Type string `xml:"type,attr"`
+			} `xml:"value"`
+		} `xml:"leave"`
+	} `xml:"leave_list"`
+	Footer struct {
+		Text       string `xml:",chardata"`
+		FooterItem []struct {
+			Text  string `xml:",chardata"`
+			Key   string `xml:"key"`
+			Value string `xml:"value"`
+		} `xml:"footerItem"`
+	} `xml:"footer"`
+}
+
+type WageCodesByRunCompanyV2Report struct {
+    Reports []struct {
+        EmployeeID int `xml:"employeeid"`
+        Period     int `xml:"period"`
+        Year       int `xml:"year"`
+        RunNumber  int `xml:"runnumber"`
+        Lines      []struct {
+            Code        int     `xml:"code"`
+            Description string  `xml:"description"`
+            Value       float64 `xml:"value"`
+        } `xml:"lines>line"`
+    } `xml:"report"`
+}
